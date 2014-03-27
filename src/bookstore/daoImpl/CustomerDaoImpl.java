@@ -17,8 +17,8 @@ public class CustomerDaoImpl implements CustomerDao{
 
 	public boolean customerAuthentication(String username, String password)
 			throws DataAccessException {
-		List<Customer> admins = hibernateTemplate.find("from Customer c where c.username='"+username + "' and a.password='"+ password + "'");
-		if(admins != null && admins.size() > 0) {
+		List<Customer> customers = hibernateTemplate.find("from Customer c where c.username='"+username + "' and c.password='"+ password + "'");
+		if(customers != null && customers.size() > 0) {
 			return true;
 		}
 		return false;

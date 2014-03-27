@@ -7,7 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Category {
 	private Integer categoryId;
-	private String CategoryName;
+	private String categoryName;
+	
 	@Id
 	@GeneratedValue
 	public Integer getCategoryId() {
@@ -17,11 +18,12 @@ public class Category {
 		this.categoryId = categoryId;
 	}
 	public String getCategoryName() {
-		return CategoryName;
+		return categoryName;
 	}
 	public void setCategoryName(String categoryName) {
-		CategoryName = categoryName;
+		this.categoryName = categoryName;
 	}
+
 	
 	
 

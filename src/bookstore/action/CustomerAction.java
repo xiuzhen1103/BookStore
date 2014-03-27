@@ -2,17 +2,23 @@ package bookstore.action;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 import bookstore.model.Customer;
 import bookstore.service.CustomerManager;
 
 @Component("customer")
 @Scope("prototype")
-public class CustomerAction {
+public class CustomerAction extends ActionSupport {
 	private Customer customer;
 	private CustomerManager customerManager;
+	private String message ="";
+	
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -32,6 +38,22 @@ public class CustomerAction {
 		return "success";
 	}
 	
-	
+	public String isLogin() throws Exception {
+		boolean authenticated = customerManager.login(customer.getUsername(), customer.getPassword());
+		if (authenticated) {
+			message = "login succeeded ";
+			//ServletActionContext.getRequest().getSession().setAttribute("admin", admin);
+			return "success";
+		} else {
+			message = "login failed ";
+			return "fail";
+		}
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 }

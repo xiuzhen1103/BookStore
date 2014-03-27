@@ -7,5 +7,6 @@ import bookstore.model.Customer;
 public interface CustomerDao {
 	public boolean customerAuthentication(String username, String password) throws DataAccessException;
 	public void save(Customer customer) throws DataAccessException;
+	
 
 }

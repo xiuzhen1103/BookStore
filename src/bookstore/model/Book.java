@@ -1,11 +1,16 @@
 package bookstore.model;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.awt.Image;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Book {
@@ -13,8 +18,11 @@ public class Book {
 	private String title;
 	private String author;
 	private Double price;
+	private Integer quantity;
 	private Category category;
-	private Image imagePath;
+	private String imagePath;
+	private Integer radioList;
+	private Set<BookTopic> bookTopics = new HashSet<BookTopic>(0);
 	
 	@Id
 	@GeneratedValue
@@ -43,12 +51,6 @@ public class Book {
 		this.price = price;
 	}
 	
-	public Image getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(Image imagePath) {
-		this.imagePath = imagePath;
-	}
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
 	public Category getCategory() {
@@ -56,6 +58,35 @@ public class Book {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	@Transient
+	public Integer getRadioList() {
+		return radioList;
+	}
+	public void setRadioList(Integer radioList) {
+		this.radioList = radioList;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "book")
+	@JoinColumn(name = "bookId")
+	public Set<BookTopic> getBookTopics() {
+		return bookTopics;
+	}
+	
+	public void setBookTopics(Set<BookTopic> bookTopics) {
+		this.bookTopics = bookTopics;
 	}
 	
 	

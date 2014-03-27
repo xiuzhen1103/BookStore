@@ -18,6 +18,46 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
+		<action name="customerLogin" class="customer" method="isLogin">
+			<result name="success">/sample.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="login">/loginCustomer.jsp</result>
+		</action>
+		
+
+		
+		<action name="adminLogin" class="admin" method="isLogin">
+			<result name="success">/admin.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="login">/userManager/loginAdmin.jsp</result>
+			
+		</action>
+		
+		<action name="category" class="category">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		
+		<action name="book" class="book">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="listCategory">/addBook.jsp</result>
+			<result name="list">/listBook.jsp</result>
+			<result name="booklist">/userManager/listBook.jsp</result>
+		</action>
+		
+		<action name="book" class="book">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="list">/userManager/listTopic.jsp</result>
+		</action>
+		
+		<action name="topic" class="topic">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="list">/userManager/listTopic.jsp</result>
+		</action>
+		
 	</package>
 </struts>
 	
