@@ -1,8 +1,13 @@
 package bookstore.action;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +21,8 @@ import bookstore.service.TopicManager;
 import com.opensymphony.xwork2.ActionSupport;
 @Component("book")
 @Scope("prototype")
-public class BookAction extends ActionSupport{
-	private static final long serialVersionUID = 1L;
+public class BookAction extends ActionSupport implements java.io.Serializable{
+
 	private Book book = new Book();
 	private BookManager bookManager;
 	private List<Book> books;
@@ -26,6 +31,7 @@ public class BookAction extends ActionSupport{
 	private List<Topic> listTopics;
 	private TopicManager topicManager;
 	private String message="";
+	private List<Book> listBooks;
 	
 	public BookManager getBookManager() {
 		return bookManager;
@@ -44,6 +50,11 @@ public class BookAction extends ActionSupport{
 	public String list() throws Exception {
 		this.books = bookManager.getBooks(this.book);
 		return "list";	
+	}
+	
+	public String logged() throws Exception {
+		this.books = bookManager.getBooks(this.book);
+		return "logged";	
 	}
 	
 	public String booklist() throws Exception {
@@ -96,15 +107,14 @@ public class BookAction extends ActionSupport{
 			return "fail";
 		}
 	}
+	
 	public String getMessage() {
 		return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 	public Book getBook() {
 		return book;
 	}
@@ -125,9 +135,34 @@ public class BookAction extends ActionSupport{
 		this.listTopics = listTopics;
 	}
 	
+	public String addToCart() throws Exception {
+		  HttpSession session=ServletActionContext.getRequest().getSession();
+		  listBooks = (List<Book>) session.getAttribute("bookList");
+		if(listBooks==null){
+			listBooks  =  new ArrayList<Book>();
+		       bookManager.load(book.getBookId());
+		       listBooks.add(book);
+		        session.setAttribute("bookList", listBooks);
+		        System.out.println(listBooks.size());
+		}else{
+			//listBooks  =  new ArrayList<Book>();
+		        bookManager.load(book.getBookId());
+		        listBooks.add(book);
+		}
+		return "addToCart";
+	}
 	
+	public String listShoppingCart() throws Exception {
+		listBooks = (List<Book>) ServletActionContext.getRequest().getSession().getAttribute("bookList");
+		return "listShoppingCart";
+	}
 	
+	public List<Book> getListBooks() {
+		return listBooks;
+	}
+	public void setListBooks(List<Book> listBooks) {
+		this.listBooks = listBooks;
+	}
 	
 
-	
 }

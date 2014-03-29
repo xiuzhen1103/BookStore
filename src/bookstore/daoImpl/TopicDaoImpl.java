@@ -40,15 +40,12 @@ public class TopicDaoImpl implements TopicDao{
 		return false;
 	}
 
-	
 
 	@Override
 	public void save(Topic topic) throws DataAccessException {
 		hibernateTemplate.save(topic);
 		
 	}
-
-
 
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;

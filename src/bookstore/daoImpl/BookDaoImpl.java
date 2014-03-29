@@ -6,9 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import javax.annotation.Resource;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,7 +14,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import bookstore.dao.BookDao;
 import bookstore.model.Book;
 import bookstore.model.BookTopic;
@@ -126,6 +123,11 @@ public class BookDaoImpl implements BookDao{
 	@Resource
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	@Override
+	public Book loadByBookId(Integer bookId) throws DataAccessException {
+		return (Book) this.hibernateTemplate.load(Book.class, bookId);
 	}
 
 }

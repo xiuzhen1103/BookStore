@@ -1,5 +1,8 @@
 package bookstore.service;
 import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+
 import bookstore.model.Book;
 
 
@@ -8,5 +11,7 @@ public interface BookManager {
 	public void add(Book book) throws Exception;
 	public boolean update(Book book) throws Exception;
 	public List<Book> getBooks(Book book) throws Exception;
+	public Book load(Integer bookId) throws Exception;
+
 
 }

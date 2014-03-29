@@ -36,10 +36,10 @@ Hello <s:property value="#session.admin.username"/><br/>
 
 	<b>Topic: </b><br/>
 
-	<a href="topc!list.action">Topic list</a> <br/> <br/>
+	<a href="topic!list.action">Topic list</a> <br/> <br/>
 	
 	<b>Area: </b><br/>
-	<a href="area!list.action">Area list</a> <br/> <br/>
+	<a href="category!list.action">no yet</a> <br/> <br/>
 	
 	<b>Job: </b><br/>
 	<a href="job!list.action">Job list</a> <br/> <br/>
@@ -50,8 +50,5 @@ Hello <s:property value="#session.admin.username"/><br/>
 	<b>Skill: </b><br/>
 	<a href="sk!list.action">Skill list</a> <br/> <br/>
 	
-	
-	
-
 </body>
 </html>

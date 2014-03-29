@@ -53,6 +53,8 @@ public class AdminAction extends ActionSupport{
 		}
 	}
 	
+
+	
 	public String logout() throws Exception {
 		ServletActionContext.getRequest().getSession().removeAttribute("admin");
 		return "logout";

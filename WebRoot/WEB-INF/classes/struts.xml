@@ -13,24 +13,34 @@
 				exception="java.lang.RuntimeException"></exception-mapping>
 		</global-exception-mappings>
 		
+	
+		
+		<action name="book3" class="book" method="logged">
+			<result name="logged">/customerLogged.jsp</result>
+		</action>
+		
+		<action name="customerLogin" class="customer" method="isLogin">
+			<result name="success" type="chain">book3</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="logged">/loginCustomer.jsp</result>
+		</action>
+		
 		<action name="customer" class="customer">
 			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="logged" type="chain">book3</result>
 		</action>
 		
 		<action name="checkUserName" class="customer" method="checkUserNameExist"/>
 		
-		<action name="customerLogin" class="customer" method="isLogin">
-			<result name="success">/sample.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<result name="login">/loginCustomer.jsp</result>
-		</action>
+		
 		
 		<action name="adminLogin" class="admin" method="isLogin">
 			<result name="success">/userManager/admin.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="login">/userManager/loginAdmin.jsp</result>
 		</action>
+		
 		
 		<action name="admin" class="admin">
 			<result name="success">/success.jsp</result>
@@ -55,6 +65,9 @@
 			<result name="booklist">/userManager/listBook.jsp</result>
 			<result name="list">/listBook.jsp</result>
 			<result name="update">/userManager/addBook.jsp</result>
+			<result name="logged">/customerLogged.jsp</result>
+			<result name="listShoppingCart">/listShoppingCart.jsp</result>
+			<result name="addToCart">/success.jsp</result>
 		</action>
 		
 		

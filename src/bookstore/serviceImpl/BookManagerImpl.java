@@ -37,5 +37,11 @@ public class BookManagerImpl implements BookManager{
 		this.bookDao = bookDao;
 	}
 
+	@Override
+	public Book load(Integer bookId) throws Exception {
+		// TODO Auto-generated method stub
+		return bookDao.loadByBookId(bookId);
+	}
+
 	
 }

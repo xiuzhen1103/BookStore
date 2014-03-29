@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Book {
+public class Book implements java.io.Serializable{
 	private Integer bookId;
 	private String title;
 	private String author;

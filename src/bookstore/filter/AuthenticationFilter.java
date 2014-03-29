@@ -1,7 +1,5 @@
 package bookstore.filter;
 
-import java.io.IOException;
-
 import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,27 +12,15 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import bookstore.model.Administrator;
+import bookstore.model.Book;
 import bookstore.model.Customer;
 
 
 public class AuthenticationFilter extends OncePerRequestFilter {
-	/**
-	 * session中用户名的key
-	 */
+
 	private static final String loginUserCode = "login.userCode"; 
-	/**
-	 * 日志对象
-	 */
 	private static final Log log = LogFactory.getLog(AuthenticationFilter.class);
-
-	/**
-	 * 不需要过滤的url集，逗号分割
-	 */
 	private String notFilterList;
-
-	/**
-	 * 不需要过滤的url
-	 */
 	private String[] notFilters;
 
 	public void setNotFilterList(String notFilterList) {
@@ -53,6 +39,8 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		
 			Administrator admin = (Administrator) session.getAttribute("admin");
 			String admin_username = admin==null?null:admin.getUsername();
+
+			
 			//check if user login		
 			if(customer_username == null || customer_username.trim().length() ==0) {
 				promptTimout("reLogin", request, response);
@@ -77,11 +65,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.web.filter.GenericFilterBean#initFilterBean()
-	 */
+
 	@Override
 	protected void initFilterBean() throws ServletException {
 		if (notFilterList != null) {
@@ -89,11 +73,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.web.filter.OncePerRequestFilter#shouldNotFilter(javax.servlet.http.HttpServletRequest)
-	 */
+
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request)
 			throws ServletException {
@@ -106,22 +86,10 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 				}
 			}
 		}
-
 		return false;
 	}
 
-	/**
-	 * 不具有访问权限，跳转到指定页面
-	 * 
-	 * @param msg
-	 *            消息内容
-	 * @param request
-	 *            请求
-	 * @param response
-	 *            响应
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	private void prompt(String msg, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		RequestDispatcher dispatcher = request
@@ -139,18 +107,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		}
 	}
 
-	/**
-	 * session不存在，跳转到登录页面
-	 * 
-	 * @param msg
-	 *            消息内容
-	 * @param request
-	 *            请求
-	 * @param response
-	 *            响应
-	 * @throws ServletException
-	 * @throws IOException
-	 */
+
 	private void promptTimout(String msg, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		StringBuilder rediretPage = new StringBuilder();
