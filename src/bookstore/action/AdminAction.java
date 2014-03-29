@@ -2,6 +2,7 @@ package bookstore.action;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -44,12 +45,17 @@ public class AdminAction extends ActionSupport{
 		boolean authenticated = adminManager.login(admin.getUsername(), admin.getPassword());
 		if (authenticated) {
 			message = "login succeeded ";
-			//ServletActionContext.getRequest().getSession().setAttribute("admin", admin);
+			ServletActionContext.getRequest().getSession().setAttribute("admin", admin);
 			return "success";
 		} else {
 			message = "login failed ";
 			return "fail";
 		}
+	}
+	
+	public String logout() throws Exception {
+		ServletActionContext.getRequest().getSession().removeAttribute("admin");
+		return "logout";
 	}
 	
 	

@@ -1,9 +1,11 @@
 package bookstore.daoImpl;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -17,7 +19,9 @@ import org.springframework.stereotype.Component;
 
 import bookstore.dao.BookDao;
 import bookstore.model.Book;
+import bookstore.model.BookTopic;
 import bookstore.model.Category;
+import bookstore.model.Topic;
 @Component("bookDao")
 public class BookDaoImpl implements BookDao{
 	private HibernateTemplate hibernateTemplate; 
@@ -80,9 +84,21 @@ public class BookDaoImpl implements BookDao{
 
 	@Override
 	public void save(Book book) throws DataAccessException  {
+		Integer[] checkBoxList = book.getCheckBoxes();
+		Set<BookTopic> bookTopics = new HashSet<BookTopic>(0);
+		
+		for(int i=0; i < checkBoxList.length;i++) {
+			BookTopic  bt = new BookTopic();
+			Topic topic =  (Topic) this.hibernateTemplate.load(Topic.class, checkBoxList[i]);
+			bt.setTopic(topic);
+			bt.setBook(book);
+			bookTopics.add(bt);	
+		}
+		
 		Integer radioList = book.getRadioList();
 		 Category category  = (Category) this.hibernateTemplate.load(Category.class, radioList);
 		 book.setCategory(category);
+		book.setBookTopics(bookTopics);
 		hibernateTemplate.save(book);
 		this.hibernateTemplate.flush();
 		
@@ -90,13 +106,14 @@ public class BookDaoImpl implements BookDao{
 
 	@Override
 	public boolean updateBook(Integer bookId, String title, String author,
-			Double price, Category category, String imagePath)
+			Double price, Integer quantity, Category category, String imagePath)
 			throws DataAccessException {
 		Book book = (Book) this.hibernateTemplate.load(Book.class,bookId);
 		if(book!=null) {
 			book.setTitle(title);
 			book.setAuthor(author);
 			book.setPrice(price);
+			book.setQuantity(quantity);
 			book.setCategory(category);
 			book.setImagePath(imagePath);
 		}

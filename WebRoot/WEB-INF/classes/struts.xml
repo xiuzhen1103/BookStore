@@ -18,19 +18,24 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
+		<action name="checkUserName" class="customer" method="checkUserNameExist"/>
+		
 		<action name="customerLogin" class="customer" method="isLogin">
 			<result name="success">/sample.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="login">/loginCustomer.jsp</result>
 		</action>
 		
-
-		
 		<action name="adminLogin" class="admin" method="isLogin">
-			<result name="success">/admin.jsp</result>
+			<result name="success">/userManager/admin.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="login">/userManager/loginAdmin.jsp</result>
-			
+		</action>
+		
+		<action name="admin" class="admin">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="logout">/userManager/loginAdmin.jsp</result>
 		</action>
 		
 		<action name="category" class="category">
@@ -38,24 +43,31 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
-		<action name="book" class="book">
-			<result name="success">/success.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<result name="listCategory">/addBook.jsp</result>
-			<result name="list">/listBook.jsp</result>
-			<result name="booklist">/userManager/listBook.jsp</result>
+		<action name="book1" class="book" method="books">
+			<result name="books">/userManager/listBook.jsp</result>
 		</action>
 		
 		<action name="book" class="book">
 			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
-			<result name="list">/userManager/listTopic.jsp</result>
+			<result name="addBook">/userManager/addBook.jsp</result>
+			<result name="list">/listBook.jsp</result>
+			<result name="booklist">/userManager/listBook.jsp</result>
+			<result name="list">/listBook.jsp</result>
+			<result name="update">/userManager/addBook.jsp</result>
 		</action>
+		
 		
 		<action name="topic" class="topic">
 			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="list">/userManager/listTopic.jsp</result>
+		</action>
+		
+		<action name="bookTopic" class="bookTopic">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="list">/userManager/listBookTopic.jsp</result>
 		</action>
 		
 	</package>

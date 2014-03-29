@@ -12,15 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>Display all Books</title>
-    
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
- 
+  
   <body>
- 
-    <b>Display All Books:</b>  
  <br> <br />
  <s:form method="post" action="book!list.action">
   		<s:textfield label="Please Enter Book Title" name="book.title"></s:textfield>
@@ -28,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				
   		<s:submit label="submit"/>
   			</s:form>
+  			
+  			   <a href="book!addBook.action">Add Book </a> 
+  			   <br /> <br />
 
  	 <table style="width:100%" width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6">
  	 	 <tr>
@@ -50,12 +46,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <td align="center" ><s:property value="#b.quantity" /></td>
 		  <td align="center" ><s:property value="#b.category.categoryName" /></td>
     	  <td align="center" ><s:property value="#b.imagePath" /></td>
-    	  <td width="20%" height="37" align="center"><b>Category Name</b></td>
+    	  <s:iterator value="books" id="b">
+    	  
+    	  </s:iterator>
+
     	  <td><a href="book!delete?book.bookId=<s:property value="#b.bookId" />">Delete</a></td>
+    	  <td><a href="book!list?book.bookId=<s:property value="#b.bookId" />">Update</a></td>
+    	  
+    	  
         </tr>
      </s:iterator>
     </table>
     
-    <s:debug></s:debug>
   </body>
 </html>

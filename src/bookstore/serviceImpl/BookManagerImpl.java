@@ -1,11 +1,7 @@
 package bookstore.serviceImpl;
-
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Component;
-
 import bookstore.dao.BookDao;
 import bookstore.model.Book;
 import bookstore.service.BookManager;
@@ -26,12 +22,11 @@ public class BookManagerImpl implements BookManager{
 	@Override
 	public void add(Book book) throws Exception {
 		bookDao.save(book);
-		
 	}
 
 	@Override
 	public boolean update(Book book) throws Exception {
-		return bookDao.updateBook(book.getBookId(), book.getTitle(), book.getAuthor(), book.getPrice(), book.getCategory(), book.getImagePath());
+		return bookDao.updateBook(book.getBookId(), book.getTitle(), book.getAuthor(), book.getPrice(),book.getQuantity(), book.getCategory(), book.getImagePath());
 	}
 
 	public BookDao getBookDao() {

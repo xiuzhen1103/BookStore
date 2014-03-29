@@ -22,6 +22,7 @@ public class Book {
 	private Category category;
 	private String imagePath;
 	private Integer radioList;
+	private Integer[] checkBoxes;
 	private Set<BookTopic> bookTopics = new HashSet<BookTopic>(0);
 	
 	@Id
@@ -88,7 +89,13 @@ public class Book {
 	public void setBookTopics(Set<BookTopic> bookTopics) {
 		this.bookTopics = bookTopics;
 	}
+	@Transient
+	public Integer[] getCheckBoxes() {
+		return checkBoxes;
+	}
+	public void setCheckBoxes(Integer[] checkBoxes) {
+		this.checkBoxes = checkBoxes;
+	}
 	
 	
-
 }

@@ -18,7 +18,7 @@ Hello <s:property value="#session.admin.username"/><br/>
 <a href="admin!logout.action">Logout</a>
 </p> 
 <div align="center" id="header">
-  <h1><i>Recruitment Solution</i></h1>
+  <h1><i>Book Store</i></h1>
   <div class="menu_20124162">
 	<ul>
     	<li><a href="admin.jsp">Home</a></li>

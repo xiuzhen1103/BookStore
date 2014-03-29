@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   <head>
     <base href="<%=basePath%>">
-    <title>Display all Books</title>
+    <title>Display All Topics</title>
     
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
   <body>
  
-    <b>Display All Books:</b>  
+    <b>Display All Topics:</b>  
     <a href="userManager/addTopic.jsp">Add Topic </a> 
  <br> <br />
 

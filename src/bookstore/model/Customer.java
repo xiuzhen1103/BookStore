@@ -2,6 +2,7 @@ package bookstore.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -9,6 +10,7 @@ public class Customer {
 	private Integer customerId;
 	private String username;
 	private String password;
+	private String password2;
 	private String name;
 	private String address;
 	private String phone;
@@ -51,6 +53,13 @@ public class Customer {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	@Transient
+	public String getPassword2() {
+		return password2;
+	}
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 	
 	

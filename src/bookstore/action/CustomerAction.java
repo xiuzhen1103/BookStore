@@ -34,6 +34,10 @@ public class CustomerAction extends ActionSupport {
 	}
 	
 	public String execute() throws Exception{
+		if(customerManager.checkUserNameExist(customer)) {
+			message = "user name is exist";
+			return "fail";
+		}
 		customerManager.add(customer);
 		return "success";
 	}
@@ -42,7 +46,7 @@ public class CustomerAction extends ActionSupport {
 		boolean authenticated = customerManager.login(customer.getUsername(), customer.getPassword());
 		if (authenticated) {
 			message = "login succeeded ";
-			//ServletActionContext.getRequest().getSession().setAttribute("admin", admin);
+			ServletActionContext.getRequest().getSession().setAttribute("customer", customer);
 			return "success";
 		} else {
 			message = "login failed ";
@@ -54,6 +58,15 @@ public class CustomerAction extends ActionSupport {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+	public String logout() throws Exception {
+		ServletActionContext.getRequest().getSession().removeAttribute("customer");
+		return "logout";
+	}
+	public String checkUserNameExist() throws Exception {
+		ServletActionContext.getResponse().getWriter().print(customerManager.checkUserNameExist(customer));
+		return null;
 	}
 
 }

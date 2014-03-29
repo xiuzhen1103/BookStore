@@ -1,5 +1,5 @@
 package bookstore.model;
-
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+@Entity
 public class BookTopic {
 	private Integer bookTopicId;
 	private Book book;
@@ -46,7 +47,5 @@ public class BookTopic {
 	public void setCheckboxes(Integer[] checkboxes) {
 		this.checkboxes = checkboxes;
 	}
-	
-	
 
 }

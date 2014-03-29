@@ -2,6 +2,7 @@ package bookstore.serviceImpl;
 
 import javax.annotation.Resource;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import bookstore.dao.CustomerDao;
@@ -25,6 +26,12 @@ public class CustomerManagerImpl implements CustomerManager {
 	@Resource
 	public void setCustomerDao(CustomerDao customerDao) {
 		this.customerDao = customerDao;
+	}
+
+	@Override
+	public boolean checkUserNameExist(Customer customer)
+			throws DataAccessException {
+		return customerDao.checkUserNameExist(customer.getUsername());
 	}
 	
 	
