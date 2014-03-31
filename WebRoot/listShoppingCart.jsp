@@ -10,16 +10,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
   <head>
-    <base href="<%=basePath%>">
+
+    <link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
     <title>Display All Books</title>
-    
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
   </head>
+  
+    <p align="right">
+Hello <s:property value="#session.customer.username"/><br/>
+<a href="book!listShoppingCart.action">Shopping Cart</a>
+<a href="loginCustomer.jsp">Logout</a> 
+</p> 
+<div align="center" id="header">
+  <h1><i>Book Store</i></h1>
+  <div class="menu_20124162">
+	<ul>
+    	<li><a href="book!logged.action">Home</a></li>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact Us</a></li>
+    </ul>
+</div>
+</div>
  
   <body>
- 
+ <br />
     <b>Display Shopping Cart:</b>  
  <br> <br />
 
@@ -40,7 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <td align="center" ><s:property value="#b.title" /></td>
 		  <td align="center" ><s:property value="#b.author" /></td>
 		  <td align="center" ><s:property value="#b.price" /></td>
-		   <td align="center" ><s:property value="#b.quantity" /></td>
+		   <td align="center" ><input type="text" value="<s:property value="#b.quantity" />"/></td>
+
 		  <td align="center" ><s:property value="#b.category.categoryName" /></td>
     	  <td align="center" ><s:property value="#b.imagePath" /></td>
         </tr>

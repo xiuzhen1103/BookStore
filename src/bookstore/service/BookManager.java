@@ -11,7 +11,7 @@ public interface BookManager {
 	public void add(Book book) throws Exception;
 	public boolean update(Book book) throws Exception;
 	public List<Book> getBooks(Book book) throws Exception;
-	public Book load(Integer bookId) throws Exception;
+	public Book get(Integer bookId) throws Exception;
 
 
 }

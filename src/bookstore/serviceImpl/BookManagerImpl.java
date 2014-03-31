@@ -38,9 +38,9 @@ public class BookManagerImpl implements BookManager{
 	}
 
 	@Override
-	public Book load(Integer bookId) throws Exception {
+	public Book get(Integer bookId) throws Exception {
 		// TODO Auto-generated method stub
-		return bookDao.loadByBookId(bookId);
+		return bookDao.getByBookId(bookId);
 	}
 
 	

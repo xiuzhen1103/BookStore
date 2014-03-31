@@ -47,7 +47,17 @@ public class BookDaoImpl implements BookDao{
 		StringBuffer hql = new StringBuffer();
 		Map<String,Object> map = new HashMap<String,Object>();
 
-		hql.append(" from Book b where 1=1 ");
+		hql.append(" from Book b ");
+		
+		if (null != book.getCheckBoxes() && book.getCheckBoxes().length > 0) {
+			hql.append(" join fetch b.bookTopics as bts where 1 = 1 and LOWER(bts.topic.name) like LOWER(:topicNames)");
+			//hql.append(" join fetch b.bookTopics as bts where 1 = 1 and bts.topic.name in (:topicNames)");
+			map.put("topicNames", book.getCheckBoxes());
+		} else {
+			hql.append(" where 1 = 1 ");
+		}
+		
+		
 		if(null!=book && book.getBookId()!=null && book.getBookId()!=0)  {
 			hql.append(" and b.bookId = :bookId");
 			map.put("bookId",+ book.getBookId());
@@ -67,14 +77,24 @@ public class BookDaoImpl implements BookDao{
 			hql.append(" and LOWER(b.author) like LOWER(:author) " );
 			map.put("author","%"+ book.getAuthor()+"%");
 		}
+		
+		if (null != book.getCheckBoxes() && book.getCheckBoxes().length > 0) {
+			hql.append(" group by b.bookId");
+		}
+		
 		Query query  = this.hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql.toString());
 		if (null != map && map.size() >= 1) {
 			Iterator<String> it = map.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String) it.next();
-				query.setParameter(key, map.get(key));
+				if (key.equals("topicNames")) {
+					query.setParameterList(key, (Integer[])map.get(key));
+				} else {
+					query.setParameter(key, map.get(key));
+				}
 			}
 		}
+		
 		
 		return query.list();
 	}
@@ -126,8 +146,8 @@ public class BookDaoImpl implements BookDao{
 	}
 
 	@Override
-	public Book loadByBookId(Integer bookId) throws DataAccessException {
-		return (Book) this.hibernateTemplate.load(Book.class, bookId);
+	public Book getByBookId(Integer bookId) throws DataAccessException {
+		return (Book) this.hibernateTemplate.get(Book.class, bookId);
 	}
 
 }

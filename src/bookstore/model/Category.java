@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Category {
+public class Category implements java.io.Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private Integer categoryId;
 	private String categoryName;
 	

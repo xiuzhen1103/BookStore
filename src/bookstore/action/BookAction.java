@@ -3,14 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import bookstore.model.Book;
 import bookstore.model.Category;
 import bookstore.model.Topic;
@@ -22,7 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Component("book")
 @Scope("prototype")
 public class BookAction extends ActionSupport implements java.io.Serializable{
-
+	
 	private Book book = new Book();
 	private BookManager bookManager;
 	private List<Book> books;
@@ -32,6 +28,7 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 	private TopicManager topicManager;
 	private String message="";
 	private List<Book> listBooks;
+	private Topic topic;
 	
 	public BookManager getBookManager() {
 		return bookManager;
@@ -128,7 +125,8 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 	public void setTopicManager(TopicManager topicManager) {
 		this.topicManager = topicManager;
 	}
-	public List<Topic> getListTopics() {
+	public List<Topic> getListTopics() throws Exception {
+		this.listTopics = topicManager.getTopics();
 		return listTopics;
 	}
 	public void setListTopics(List<Topic> listTopics) {
@@ -140,13 +138,13 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 		  listBooks = (List<Book>) session.getAttribute("bookList");
 		if(listBooks==null){
 			listBooks  =  new ArrayList<Book>();
-		       bookManager.load(book.getBookId());
+			book =bookManager.get(book.getBookId());
 		       listBooks.add(book);
 		        session.setAttribute("bookList", listBooks);
 		        System.out.println(listBooks.size());
 		}else{
 			//listBooks  =  new ArrayList<Book>();
-		        bookManager.load(book.getBookId());
+		        book = bookManager.get(book.getBookId());
 		        listBooks.add(book);
 		}
 		return "addToCart";
@@ -163,6 +161,11 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 	public void setListBooks(List<Book> listBooks) {
 		this.listBooks = listBooks;
 	}
-	
+	public Topic getTopic() {
+		return topic;
+	}
+	public void setTopic(Topic topic) {
+		this.topic = topic;
+	}
 
 }

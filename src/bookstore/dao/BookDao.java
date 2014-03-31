@@ -13,6 +13,6 @@ public interface BookDao {
 	public boolean updateBook(Integer bookId, String title, String author, Double price,Integer quantity,
 			Category category, String imagePath) throws DataAccessException;
 	public List<Book> getBooks(Book book) throws DataAccessException;
-	public Book loadByBookId(Integer bookId) throws DataAccessException;
+	public Book getByBookId(Integer bookId) throws DataAccessException;
 
 }

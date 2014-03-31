@@ -12,33 +12,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>Display all Books</title>
-    
+    <link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
+  
+  
+  <p align="right">
+Hello <s:property value="#session.customer.username"/><br/>
+<a href="book!listShoppingCart.action">Shopping Cart</a>
+<a href="loginCustomer.jsp">Logout</a> 
+</p> 
+<div align="center" id="header">
+  <h1><i>Book Store</i></h1>
+  <div class="menu_20124162">
+	<ul>
+    	<li><a href="book!logged.action">Home</a></li>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact Us</a></li>
+    </ul>
+</div>
+</div>
  
   <body>
  
     <b>Display All Books:</b>  
  <br> <br />
- <s:form method="post" action="book!list.action">
-  		<s:textfield label="Please Enter Book Title" name="book.title"></s:textfield>
-  			<s:textfield label="Please Enter Job Category Name" name="book.category.categoryName"></s:textfield>
-  				
-  		<s:submit label="submit"/>
-  			</s:form>
+  <form method="post" action="book!list.action">
+  Book Title:<input type="text" name="book.title"/>
+  Category :<input type="text" name="book.category.categoryName"/>
+  Topic Name:<input type="text" name="book.topic.name"/>
+  	
+  		<input type="submit" value="submit"/>
+  	</form>
 
  	 <table style="width:100%" width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6">
  	 	 <tr>
 		      <td width="5%" height="37" align="center"><b>Book Id</b></td>
 		      <td width="10%" height="37" align="center"><b>Title</b></td>
 		      <td width="10%" height="37" align="center"><b>Author</b></td>
-		      <td width="15%" height="37" align="center"><b>Price</b></td>
-		      <td width="15%" height="37" align="center"><b>Quantity</b></td>
-		      <td width="20%" height="37" align="center"><b>Category Name</b></td>
-		      <td width="20%" height="37" align="center"><b>Image Path</b></td>
-
+		      <td width="5%" height="37" align="center"><b>Price</b></td>
+		      <td width="5%" height="37" align="center"><b>Quantity</b></td>
+		      <td width="10%" height="37" align="center"><b>Category Name</b></td>
+		      <td width="10%" height="37" align="center"><b>Image Path</b></td> 
+			 <td width="30%" height="37" align="center"><b>Topics</b></td>
+			 <td width="6%" height="37" align="center"><b>Add To Cart</b></td>
           </tr>
  	
           <s:iterator value="books" id="b">
@@ -50,7 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <td align="center" ><s:property value="#b.quantity" /></td>
 		  <td align="center" ><s:property value="#b.category.categoryName" /></td>
     	  <td align="center" ><s:property value="#b.imagePath" /></td>
-
+		  <td align="center" >
+             <s:iterator value="#b.bookTopics" var="bt" status="st">
+                ${bt.topic.name} <s:if test="!#st.last">,</s:if>
+             </s:iterator>
+           </td>
+           <td><a href="book!addToCart?book.bookId=<s:property value="#b.bookId" />">Add To Cart</a></td>
 
         </tr>
      </s:iterator>
