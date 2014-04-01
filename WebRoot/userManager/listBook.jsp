@@ -70,7 +70,7 @@ Hello <s:property value="#session.admin.username"/><br/>
              </s:iterator>
            </td>
     	  <td><a href="book!delete?book.bookId=<s:property value="#b.bookId" />">Delete</a></td>
-    	  <td><a href="book!list?book.bookId=<s:property value="#b.bookId" />">Update</a></td>
+    	  <td><a href="book!get?book.bookId=<s:property value="#b.bookId" />">Update</a></td>
     	  
     	  
         </tr>

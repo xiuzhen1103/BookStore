@@ -86,6 +86,13 @@ public class BookTopicDaoImpl implements BookTopicDao{
 	public void setBook(Book book) {
 		this.book = book;
 	}
+
+	@Override
+	public boolean updateBookTopic(Integer bookTopicId, Integer bookId,
+			Integer topicId) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 

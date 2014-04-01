@@ -119,6 +119,7 @@ Hello <s:property value="#session.admin.username"/><br/>
     <tfoot>
         <tr>
           <td colspan="2">
+         	 <input name="back" type="button" onclick="history.back()" value="Back" >
               <input name="submit" type="submit" id="submit" value="Submit">
               <input name="reset" type="reset" value="Reset" >
           </td>

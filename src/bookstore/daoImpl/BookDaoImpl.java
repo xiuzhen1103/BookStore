@@ -95,7 +95,6 @@ public class BookDaoImpl implements BookDao{
 			}
 		}
 		
-		
 		return query.list();
 	}
 
@@ -147,7 +146,7 @@ public class BookDaoImpl implements BookDao{
 
 	@Override
 	public Book getByBookId(Integer bookId) throws DataAccessException {
-		return (Book) this.hibernateTemplate.get(Book.class, bookId);
+		return (Book) this.hibernateTemplate.load(Book.class, bookId);
 	}
 
 }

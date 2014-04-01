@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 
-<title> Customer Login Page </title>
+<title> Admin Login Page </title>
 </head>
 <body>
 

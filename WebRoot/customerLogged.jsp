@@ -12,11 +12,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
-<title>Administrator page</title>
+<title>Customer Logged</title>
 </head>
 
   <p align="right">
 Hello <s:property value="#session.customer.username"/><br/>
+<a href="customer!get?customer.customerId=<s:property value="#session.customer.customerId"/> ">Profile</a>
 <a href="book!listShoppingCart.action">Shopping Cart</a>
 <a href="loginCustomer.jsp">Logout</a> 
 </p> 

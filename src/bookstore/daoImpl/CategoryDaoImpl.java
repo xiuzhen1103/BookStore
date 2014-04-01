@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import bookstore.dao.CategoryDao;
 import bookstore.model.Book;
 import bookstore.model.Category;
+import bookstore.model.Customer;
 
 @Component("categoryDao")
 public class CategoryDaoImpl implements CategoryDao{
@@ -70,7 +71,6 @@ public class CategoryDaoImpl implements CategoryDao{
 
 	@Override
 	public List<Category> getCategorys() throws DataAccessException {
-		//return (List<Category>)this.hibernateTemplate.find("from Category");
 		StringBuffer hql = new StringBuffer();
 		Map<String,Object> map = new HashMap<String,Object>();
 
@@ -86,6 +86,12 @@ public class CategoryDaoImpl implements CategoryDao{
 		}
 		
 		return query.list();
+	}
+
+	@Override
+	public Category getByCustomerId(Integer categoryId)
+			throws DataAccessException {
+		return (Category) this.hibernateTemplate.get(Category.class, categoryId);
 	}
 	
 	

@@ -167,5 +167,21 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
+	
+	public String get() throws Exception{
+		this.book = this.bookManager.get(book.getBookId());
+		return "get";
+	}
+	public String update() throws Exception {
+		boolean updated = bookManager.update(book);
+		if(updated) {
+			message = "update succeeded";
+			return "success";
+		}
+		else {
+			message = "update failed";
+			return "fail";
+		}
+	}
 
 }

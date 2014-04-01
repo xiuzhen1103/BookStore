@@ -35,23 +35,23 @@ Hello <s:property value="#session.admin.username"/><br/>
 </div>
 </div>
  <br />
-    <b>Display All Topics:</b>  
-    <a href="userManager/addTopic.jsp">Add Topic </a> 
+    <b>Display All Category:</b>  
+    <a href="userManager/addTopic.jsp">Add Category </a> 
  <br> <br />
 
  	 <table style="width:100%" width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6">
  	 	 <tr>
-		      <td width="5%" height="37" align="center"><b>Topic Id</b></td>
+		      <td width="5%" height="37" align="center"><b>Category Id</b></td>
 		      <td width="10%" height="37" align="center"><b>Name</b></td>
 
           </tr>
  	
-          <s:iterator value="topics" id="t">
+          <s:iterator value="categorys" id="c">
 	      <tr bgcolor="#EFF3F7" class="TableBody1" onmouseover="this.bgColor='#DEE7FF';" onmouseout="this.bgColor='#EFF3F7';">
-		  <td align="center" ><s:property value="#t.topicId" /></td>
-		  <td align="center" ><s:property value="#t.name" /></td>
-    	  <td><a href="topic!delete?topic.topicId=<s:property value="#t.topicId" />">Delete</a></td>
-    	  <td><a href="topic!get?topic.topicId=<s:property value="#t.topicId" />">Update</a></td>
+		  <td align="center" ><s:property value="#c.categoryId" /></td>
+		  <td align="center" ><s:property value="#c.categoryName" /></td>
+    	  <td><a href="category!delete?category.categoryId=<s:property value="#c.categoryId" />">Delete</a></td>
+    	  <td><a href="category!get?category.categoryId=<s:property value="#c.categoryId" />">Update</a></td>
         </tr>
      </s:iterator>
     </table>

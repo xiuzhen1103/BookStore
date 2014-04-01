@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <p align="right">
 Hello <s:property value="#session.customer.username"/><br/>
+<a href="customer!get?customer.customerId=<s:property value="#session.customer.customerId"/> ">Profile</a>
 <a href="book!listShoppingCart.action">Shopping Cart</a>
 <a href="loginCustomer.jsp">Logout</a> 
 </p> 

@@ -44,6 +44,11 @@ public class TopicManagerImpl implements TopicManager{
 		return topicDao.updateTopic(topic.getTopicId(), topic.getName());
 	}
 
+	@Override
+	public Topic get(Topic topic) throws Exception {
+		return topicDao.getByTopicId(topic.getTopicId());
+	}
+
 
 
 }
