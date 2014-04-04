@@ -1,5 +1,7 @@
 package bookstore.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
@@ -13,9 +15,12 @@ import com.opensymphony.xwork2.ActionSupport;
 @Component("category")
 @Scope("prototype")
 public class CategoryAction extends ActionSupport{
+
+	private static final long serialVersionUID = 1L;
 	private Category category;
 	private CategoryManager categoryManager;
 	private String message="";
+	private List<Category> categorys;
 	public Category getCategory() {
 		return category;
 	}
@@ -62,6 +67,21 @@ public class CategoryAction extends ActionSupport{
 		}
 	}
 	
+	public String get() throws Exception{
+		this.category = this.categoryManager.getbyId(category);
+		return "get";
+	}
+	
+	public String list() throws Exception {
+		this.categorys = categoryManager.getCategorys();
+		return "list";	
+	}
+	public List<Category> getCategorys() {
+		return categorys;
+	}
+	public void setCategorys(List<Category> categorys) {
+		this.categorys = categorys;
+	}
 	
 
 }

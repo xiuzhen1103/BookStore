@@ -11,12 +11,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
-<title>Administrator page</title>
+ <link type="text/css" href="<%=basePath%>style/style.css" rel="StyleSheet" />
+	<link type="text/css" href="<%=basePath%>js/select2/select2.css" rel="StyleSheet" />
+	<script type="text/javascript" src="<%=basePath%>js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/select2/select2.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/select2/select2_locale_en.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/bookTopic.js"></script>
+<title>Customer Logged</title>
 </head>
 
   <p align="right">
 Hello <s:property value="#session.customer.username"/><br/>
+<a href="customer!get?customer.customerId=<s:property value="#session.customer.customerId"/> ">Profile</a>
 <a href="book!listShoppingCart.action">Shopping Cart</a>
 <a href="loginCustomer.jsp">Logout</a> 
 </p> 
@@ -38,9 +44,11 @@ Hello <s:property value="#session.customer.username"/><br/>
  <form method="post" action="book!list.action">
   Book Title:<input type="text" name="book.title"/>
  Category Name:<input type="text" name="book.category.categoryName"/>
- Topic Name:<input type="text" name="book.topic.name"/>
- 			
-  				
+	&nbsp;Book Topic:
+  <select multiple id="topicId" name="book.checkBoxes" style="width:180px">
+    <option></option>
+  </select>
+
   		<input type="submit" value="submit"/>
   	</form>
 
@@ -55,6 +63,7 @@ Hello <s:property value="#session.customer.username"/><br/>
 		      <td width="10%" height="37" align="center"><b>Image Path</b></td>
 			 
 			 <td width="30%" height="37" align="center"><b>Topics</b></td>
+			 <td width="5%" height="37" align="center"><b>Comment</b></td>
 			 <td width="6%" height="37" align="center"><b>Add To Cart</b></td>
           </tr>
  	
@@ -73,6 +82,8 @@ Hello <s:property value="#session.customer.username"/><br/>
                 ${bt.topic.name} <s:if test="!#st.last">,</s:if>
              </s:iterator>
            </td>
+           
+           <td><a href="comment!addComment?book.bookId=<s:property value="#b.bookId" />">Comment</a></td>
            <td><a href="book!addToCart?book.bookId=<s:property value="#b.bookId" />">Add To Cart</a></td>
 
         </tr>

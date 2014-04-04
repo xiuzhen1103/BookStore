@@ -45,7 +45,9 @@ public class AdminAction extends ActionSupport{
 		boolean authenticated = adminManager.login(admin.getUsername(), admin.getPassword());
 		if (authenticated) {
 			message = "login succeeded ";
+			admin = adminManager.getByUserName(admin);
 			ServletActionContext.getRequest().getSession().setAttribute("admin", admin);
+			System.out.println("AdminId:" + admin.getAdminId());
 			return "success";
 		} else {
 			message = "login failed ";
@@ -53,7 +55,6 @@ public class AdminAction extends ActionSupport{
 		}
 	}
 	
-
 	
 	public String logout() throws Exception {
 		ServletActionContext.getRequest().getSession().removeAttribute("admin");

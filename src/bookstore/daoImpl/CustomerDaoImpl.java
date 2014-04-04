@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 import bookstore.dao.CustomerDao;
+import bookstore.model.Book;
 import bookstore.model.Customer;
 @Component("customerDao")
 public class CustomerDaoImpl implements CustomerDao{
@@ -42,7 +43,40 @@ public class CustomerDaoImpl implements CustomerDao{
 			return true;
 		}
 		return false;
-	
+	}
+	@Override
+	public Customer getByUserName(String username)
+	throws DataAccessException {
+		 List<Customer> customers =  hibernateTemplate.find("from Customer c where c.username = '" + username + "'");
+		 if(customers != null && customers.size() > 0) {
+			 return customers.get(0);
+			}
+		 /*
+		 Object[] values = {"username","password"};
+		 String hql = "from Regites where username=? and password=?";
+
+		 getHibernateTemplate().find(hql,vlaues);
+		 */
+		 return null;
 	}
 
+	@Override
+	public boolean updateCustomer(Integer customerId, String username,
+			 String name, String address,
+			String phone) throws DataAccessException {
+		Customer customer = (Customer) this.hibernateTemplate.load(Customer.class,customerId);
+		if(customer!=null) {
+			customer.setUsername(username);
+			customer.setName(name);
+			customer.setAddress(address);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public Customer getByCustomerId(Integer customerId)
+			throws DataAccessException {
+		return (Customer) this.hibernateTemplate.load(Customer.class, customerId);
+	}
 }

@@ -12,15 +12,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>Display all Books</title>
-    <link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+   
+   <link type="text/css" href="<%=basePath%>style/style.css" rel="StyleSheet" />
+	<link type="text/css" href="<%=basePath%>js/select2/select2.css" rel="StyleSheet" />
+	<script type="text/javascript" src="<%=basePath%>js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/select2/select2.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/select2/select2_locale_en.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/bookTopic.js"></script>
+
   </head>
   
   
   <p align="right">
 Hello <s:property value="#session.customer.username"/><br/>
+<a href="customer!get?customer.customerId=<s:property value="#session.customer.customerId"/> ">Profile</a>
 <a href="book!listShoppingCart.action">Shopping Cart</a>
 <a href="loginCustomer.jsp">Logout</a> 
 </p> 
@@ -42,7 +47,11 @@ Hello <s:property value="#session.customer.username"/><br/>
   <form method="post" action="book!list.action">
   Book Title:<input type="text" name="book.title"/>
   Category :<input type="text" name="book.category.categoryName"/>
-  Topic Name:<input type="text" name="book.topic.name"/>
+  
+    &nbsp;Book Topic:
+  <select multiple id="topicId" name="book.checkBoxes" style="width:180px">
+    <option></option>
+  </select>
   	
   		<input type="submit" value="submit"/>
   	</form>
@@ -79,7 +88,6 @@ Hello <s:property value="#session.customer.username"/><br/>
         </tr>
      </s:iterator>
     </table>
-    
-    <s:debug></s:debug>
+
   </body>
 </html>

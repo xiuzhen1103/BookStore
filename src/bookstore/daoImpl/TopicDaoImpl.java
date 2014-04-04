@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import bookstore.dao.TopicDao;
 import bookstore.model.Book;
 import bookstore.model.Category;
+import bookstore.model.Customer;
 import bookstore.model.Topic;
 @Component("topicDao")
 public class TopicDaoImpl implements TopicDao{
@@ -58,9 +59,10 @@ public class TopicDaoImpl implements TopicDao{
 	@Override
 	public boolean updateTopic(Integer topicId, String name)
 			throws DataAccessException {
-		Topic topic = (Topic) this.hibernateTemplate.load(Book.class,topicId);
+		Topic topic = (Topic) this.hibernateTemplate.load(Topic.class,topicId);
 		if(topic!=null) {
 			topic.setName(name);
+			return true;
 		}
 		return false;
 	}
@@ -69,6 +71,12 @@ public class TopicDaoImpl implements TopicDao{
 	@Override
 	public List<Topic> getTopics() throws DataAccessException {
 		return (List<Topic>)this.hibernateTemplate.find("from Topic");
+	}
+
+
+	@Override
+	public Topic getByTopicId(Integer topicId) throws DataAccessException {
+		return (Topic) this.hibernateTemplate.get(Topic.class, topicId);
 	}
 
 }

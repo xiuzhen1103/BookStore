@@ -11,5 +11,6 @@ public interface TopicManager {
 	public void add(Topic topic) throws DataAccessException;
 	public boolean update(Topic topic) throws Exception;
 	public List<Topic> getTopics() throws Exception;
+	public Topic get(Topic topic) throws Exception;
 
 }

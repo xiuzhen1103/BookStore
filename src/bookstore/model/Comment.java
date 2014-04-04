@@ -10,25 +10,28 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Comment {
-	private String commentId;
+	private Integer commentId;
 	private Book book;
 	private Integer rate;
 	private String comment;
 	private Date createTime;
+	private Customer customer;
 	
 	@Id
 	@GeneratedValue
-	public String getCommentId() {
+	public Integer getCommentId() {
 		return commentId;
 	}
-	public void setCommentId(String commentId) {
+	public void setCommentId(Integer commentId) {
 		this.commentId = commentId;
 	}
+	
 	@ManyToOne
 	@JoinColumn(name = "bookId")
 	public Book getBook() {
 		return book;
 	}
+	
 	public void setBook(Book book) {
 		this.book = book;
 	}
@@ -49,6 +52,14 @@ public class Comment {
 	}
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	@ManyToOne
+	@JoinColumn(name = "customerId")
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 }

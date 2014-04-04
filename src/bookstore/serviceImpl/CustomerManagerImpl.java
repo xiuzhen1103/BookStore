@@ -30,8 +30,24 @@ public class CustomerManagerImpl implements CustomerManager {
 
 	@Override
 	public boolean checkUserNameExist(Customer customer)
-			throws DataAccessException {
+			throws Exception {
 		return customerDao.checkUserNameExist(customer.getUsername());
+	}
+
+	@Override
+	public Customer getbyId(Customer customer) throws Exception {
+		return customerDao.getByCustomerId(customer.getCustomerId());
+	}
+
+	@Override
+	public boolean update(Customer customer) throws Exception {
+		return customerDao.updateCustomer(customer.getCustomerId(), customer.getUsername(),  customer.getName(), customer.getAddress(), customer.getPhone());
+	}
+
+	@Override
+	public Customer getByUserName(Customer customer) throws Exception {
+		// TODO Auto-generated method stub
+		return customerDao.getByUserName(customer.getUsername());
 	}
 	
 	

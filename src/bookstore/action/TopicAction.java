@@ -16,6 +16,8 @@ import com.opensymphony.xwork2.ActionSupport;
 @Component("topic")
 @Scope("prototype")
 public class TopicAction  extends ActionSupport{
+
+	private static final long serialVersionUID = 1L;
 	private TopicManager topicManager;
 	private Topic topic;
 	private String message = "";
@@ -79,6 +81,12 @@ public class TopicAction  extends ActionSupport{
 		return "list";	
 	}
 	
+	public String get() throws Exception{
+		this.topic = this.topicManager.get(topic);
+		return "get";
+	}
+	
+
 
 	
 

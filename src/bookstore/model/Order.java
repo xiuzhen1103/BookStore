@@ -10,7 +10,6 @@ public class Order {
 	private Integer orderId;
 	private Double totalAmount;
 	private Integer quantity;
-	private Date createTime;
 	private Account account;
 	private Customer customer;
 	
@@ -28,12 +27,7 @@ public class Order {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public Date getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+
 	public Double getTotalAmount() {
 		return totalAmount;
 	}

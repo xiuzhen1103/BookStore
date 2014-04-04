@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderItem {
-	
 	private Integer orderItemId;
 	private Double price;
 	private Integer quantity;

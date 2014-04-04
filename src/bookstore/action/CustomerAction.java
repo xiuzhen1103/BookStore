@@ -46,7 +46,9 @@ public class CustomerAction extends ActionSupport {
 		boolean authenticated = customerManager.login(customer.getUsername(), customer.getPassword());
 		if (authenticated) {
 			message = "login succeeded ";
+			customer = customerManager.getByUserName(customer);
 			ServletActionContext.getRequest().getSession().setAttribute("customer", customer);
+			System.out.println("customerId:" + customer.getCustomerId());
 			return "success";
 		} else {
 			message = "login failed ";
@@ -67,6 +69,23 @@ public class CustomerAction extends ActionSupport {
 	public String checkUserNameExist() throws Exception {
 		ServletActionContext.getResponse().getWriter().print(customerManager.checkUserNameExist(customer));
 		return null;
+	}
+	
+	public String update() throws Exception {
+		boolean updated = customerManager.update(customer);
+		if(updated) {
+			message = "update succeeded";
+			return "success";
+		}
+		else {
+			message = "update failed";
+			return "fail";
+		}
+	}
+	
+	public String get() throws Exception{
+		this.customer = this.customerManager.getbyId(customer);
+		return "get";
 	}
 
 }

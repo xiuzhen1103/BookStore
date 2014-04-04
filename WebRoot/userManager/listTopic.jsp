@@ -51,6 +51,7 @@ Hello <s:property value="#session.admin.username"/><br/>
 		  <td align="center" ><s:property value="#t.topicId" /></td>
 		  <td align="center" ><s:property value="#t.name" /></td>
     	  <td><a href="topic!delete?topic.topicId=<s:property value="#t.topicId" />">Delete</a></td>
+    	  <td><a href="topic!get?topic.topicId=<s:property value="#t.topicId" />">Update</a></td>
         </tr>
      </s:iterator>
     </table>

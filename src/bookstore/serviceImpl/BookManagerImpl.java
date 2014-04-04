@@ -11,7 +11,7 @@ public class BookManagerImpl implements BookManager{
 
 	@Override
 	public boolean delete(Integer bookId) throws Exception {
-		return bookDao.deleteJob(bookId);
+		return bookDao.deleteBook(bookId);
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class BookDaoImpl implements BookDao{
 	private HibernateTemplate hibernateTemplate; 
 
 	@Override
-	public boolean deleteJob(final Integer bookId) throws DataAccessException {
+	public boolean deleteBook(final Integer bookId) throws DataAccessException {
 		List<Book> books = hibernateTemplate.find("from Book b where b.bookId = '" + bookId + "'");
 
 		if(books != null && books.size() > 0) {
@@ -50,9 +50,9 @@ public class BookDaoImpl implements BookDao{
 		hql.append(" from Book b ");
 		
 		if (null != book.getCheckBoxes() && book.getCheckBoxes().length > 0) {
-			hql.append(" join fetch b.bookTopics as bts where 1 = 1 and LOWER(bts.topic.name) like LOWER(:topicNames)");
+			hql.append(" join fetch b.bookTopics as bts where 1 = 1 and bts.topic.topicId in (:topicIds)");
 			//hql.append(" join fetch b.bookTopics as bts where 1 = 1 and bts.topic.name in (:topicNames)");
-			map.put("topicNames", book.getCheckBoxes());
+			map.put("topicIds", book.getCheckBoxes());
 		} else {
 			hql.append(" where 1 = 1 ");
 		}
@@ -87,14 +87,13 @@ public class BookDaoImpl implements BookDao{
 			Iterator<String> it = map.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String) it.next();
-				if (key.equals("topicNames")) {
+				if (key.equals("topicIds")) {
 					query.setParameterList(key, (Integer[])map.get(key));
 				} else {
 					query.setParameter(key, map.get(key));
 				}
 			}
 		}
-		
 		
 		return query.list();
 	}
@@ -133,6 +132,7 @@ public class BookDaoImpl implements BookDao{
 			book.setQuantity(quantity);
 			book.setCategory(category);
 			book.setImagePath(imagePath);
+			return true;
 		}
 		return false;
 	}
@@ -147,7 +147,7 @@ public class BookDaoImpl implements BookDao{
 
 	@Override
 	public Book getByBookId(Integer bookId) throws DataAccessException {
-		return (Book) this.hibernateTemplate.get(Book.class, bookId);
+		return (Book) this.hibernateTemplate.load(Book.class, bookId);
 	}
 
 }

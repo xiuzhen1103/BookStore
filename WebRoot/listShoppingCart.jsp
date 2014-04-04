@@ -10,7 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
   <head>
-
     <link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
     <title>Display All Books</title>
 
@@ -18,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
     <p align="right">
 Hello <s:property value="#session.customer.username"/><br/>
+<a href="customer!get?customer.customerId=<s:property value="#session.customer.customerId"/> ">Profile</a>
 <a href="book!listShoppingCart.action">Shopping Cart</a>
 <a href="loginCustomer.jsp">Logout</a> 
 </p> 
@@ -62,6 +62,5 @@ Hello <s:property value="#session.customer.username"/><br/>
      </s:iterator>
     </table>
     
-    <s:debug></s:debug>
   </body>
 </html>

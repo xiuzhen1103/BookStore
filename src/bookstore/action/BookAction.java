@@ -1,7 +1,6 @@
 package bookstore.action;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
@@ -126,7 +125,6 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 		this.topicManager = topicManager;
 	}
 	public List<Topic> getListTopics() throws Exception {
-		this.listTopics = topicManager.getTopics();
 		return listTopics;
 	}
 	public void setListTopics(List<Topic> listTopics) {
@@ -167,5 +165,35 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
+	
+	public String get() throws Exception{
+		this.book = this.bookManager.get(book.getBookId());
+		return "get";
+	}
+	public String update() throws Exception {
+		boolean updated = bookManager.update(book);
+		if(updated) {
+			message = "update succeeded";
+			return "success";
+		}
+		else {
+			message = "update failed";
+			return "fail";
+		}
+	}
+	
+	public String listTopics() throws Exception {
+		this.listTopics = topicManager.getTopics();
+		StringBuffer sb = new StringBuffer();
+		for(Topic topic : listTopics) {
+            sb.append(topic.getTopicId() + "_" + topic.getName()).append(","); 
+		}
+		if (sb.toString().endsWith(",")) {
+		    sb.deleteCharAt(sb.length() - 1);
+		}
+		ServletActionContext.getResponse().getWriter().print(sb.toString());
+		return null;
+	}
+
 
 }

@@ -39,7 +39,7 @@ Hello <s:property value="#session.admin.username"/><br/>
 	<a href="topic!list.action">Topic list</a> <br/> <br/>
 	
 	<b>Area: </b><br/>
-	<a href="category!list.action">no yet</a> <br/> <br/>
+	<a href="category!list.action">Category list</a> <br/> <br/>
 	
 	<b>Job: </b><br/>
 	<a href="job!list.action">Job list</a> <br/> <br/>

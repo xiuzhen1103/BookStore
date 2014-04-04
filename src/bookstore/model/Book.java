@@ -14,9 +14,7 @@ import javax.persistence.Transient;
 
 @Entity
 public class Book implements java.io.Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private Integer bookId;
 	private String title;
@@ -69,6 +67,10 @@ public class Book implements java.io.Serializable{
 	}
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	@Transient
 	public Integer getRadioList() {

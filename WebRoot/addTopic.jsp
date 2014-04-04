@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <b>add Topic</b>
     <form method="post" action="topic.action">
     	 Name:<input type="text" name="topic.name"><br>
+    	 <input name="back" type="button" onclick="history.back()" value="Back" >
     	<input type="submit" value="submit"/>
     </form>
   </body>

@@ -39,8 +39,12 @@ public class CategoryManagerImpl implements CategoryManager{
 
 	@Override
 	public List<Category> getCategorys() throws Exception {
-		// TODO Auto-generated method stub
 		return categoryDao.getCategorys();
+	}
+
+	@Override
+	public Category getbyId(Category category) throws Exception {
+		return categoryDao.getByCustomerId(category.getCategoryId());
 	}
 	
 	

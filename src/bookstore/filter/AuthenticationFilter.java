@@ -32,7 +32,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 			HttpServletResponse response, FilterChain filterChain)
 			throws ServletException {
 		try {
-			//String url = request.getServletPath();
+			String url = request.getServletPath();
 			HttpSession session = request.getSession();
 			Customer customer = (Customer) session.getAttribute("customer");
 			String customer_username = customer==null?null:customer.getUsername();

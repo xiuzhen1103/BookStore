@@ -4,5 +4,6 @@ import bookstore.model.Administrator;
 public interface AdministratorManager {
 	public boolean login(String username, String password) throws Exception;
 	public void add(Administrator admin) throws Exception;
+	public Administrator getByUserName(Administrator admin);
 
 }

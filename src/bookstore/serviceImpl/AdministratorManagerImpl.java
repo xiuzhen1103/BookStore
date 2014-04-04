@@ -28,6 +28,11 @@ public class AdministratorManagerImpl implements AdministratorManager {
 	public void setAdminDao(AdministratorDao adminDao) {
 		this.adminDao = adminDao;
 	}
+	@Override
+	public Administrator getByUserName(Administrator admin) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
