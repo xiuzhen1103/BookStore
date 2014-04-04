@@ -14,7 +14,16 @@ import javax.persistence.Transient;
 
 @Entity
 public class Book implements java.io.Serializable{
+<<<<<<< HEAD
 	
+=======
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	/**
+	 * 
+	 */
+>>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
 	private static final long serialVersionUID = 1L;
 	private Integer bookId;
 	private String title;

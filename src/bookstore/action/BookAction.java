@@ -181,6 +181,7 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 			return "fail";
 		}
 	}
+<<<<<<< HEAD
 	
 	public String listTopics() throws Exception {
 		this.listTopics = topicManager.getTopics();
@@ -195,5 +196,7 @@ public class BookAction extends ActionSupport implements java.io.Serializable{
 		return null;
 	}
 
+=======
+>>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
 
 }

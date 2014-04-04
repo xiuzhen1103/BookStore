@@ -63,6 +63,10 @@
 		<action name="updateCategory" class="category" method="update">
 			<result name="success" type="chain">book2</result>
 			<result name="fail">/fail.jsp</result>
+<<<<<<< HEAD
+=======
+			<result name="updateCategory">/userManager/updateCategory.jsp</result>
+>>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
 		</action>
 		
 		<action name="book1" class="book" method="books">
@@ -102,9 +106,12 @@
 		<action name="updateTopic" class="topic" method="update">
 			<result name="success" type="chain">topic2</result>
 			<result name="fail">/fail.jsp</result>
+<<<<<<< HEAD
 		</action>
 		
 		<action name="listTopics" class="book" method="listTopics">
+=======
+>>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
 		</action>
 		
 		<action name="bookTopic" class="bookTopic">
