@@ -156,10 +156,6 @@ public class BookDaoImpl implements BookDao{
 	public boolean updateBook(Book book) throws DataAccessException {
 		this.hibernateTemplate.update(book);
 		return true;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -172,11 +168,6 @@ public class BookDaoImpl implements BookDao{
 	@Override
 	public List<Book> sortBookByParam2(String sort) {
 		return (List<Book>) this.hibernateTemplate.find("From Book b order by b."+ sort + " desc");
-<<<<<<< HEAD
-=======
-=======
->>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
->>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 	}
 
 }

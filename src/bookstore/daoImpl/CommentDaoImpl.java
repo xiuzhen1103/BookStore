@@ -2,14 +2,6 @@ package bookstore.daoImpl;
 import java.sql.SQLException;
 import java.util.List;
 import javax.annotation.Resource;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
-import org.apache.struts2.ServletActionContext;
->>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
->>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.dao.DataAccessException;
