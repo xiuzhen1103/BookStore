@@ -33,10 +33,11 @@ Hello <s:property value="#session.customer.username"/><br/>
 </div>
  
   <body>
+  
  <br />
     <b>Display Shopping Cart:</b>  
  <br> <br />
-
+ <s:form action="book!pay.action" method="post">
  	 <table style="width:100%" width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6">
  	 	 <tr>
 		      <td width="5%" height="37" align="center"><b>Book Id</b></td>
@@ -47,20 +48,47 @@ Hello <s:property value="#session.customer.username"/><br/>
 		      <td width="20%" height="37" align="center"><b>Category Name</b></td>
 		      <td width="20%" height="37" align="center"><b>Image Path</b></td>
           </tr>
- 	
-          <s:iterator value="listBooks" id="b">
-	      <tr bgcolor="#EFF3F7" class="TableBody1" onmouseover="this.bgColor='#DEE7FF';" onmouseout="this.bgColor='#EFF3F7';">
-		  <td align="center" ><s:property value="#b.bookId" /></td>
-		  <td align="center" ><s:property value="#b.title" /></td>
-		  <td align="center" ><s:property value="#b.author" /></td>
-		  <td align="center" ><s:property value="#b.price" /></td>
-		   <td align="center" ><input type="text" value="<s:property value="#b.quantity" />"/></td>
+			<s:iterator value="listBooks" id="b" status="stat">
+				<tr bgcolor="#EFF3F7" class="TableBody1" onmouseover="this.bgColor='#DEE7FF';" onmouseout="this.bgColor='#EFF3F7';">
+					<s:hidden name="requestBooks[%{#stat.index}].bookId" value="%{listBooks[#stat.index].bookId}"/>
+					<s:hidden name="requestBooks[%{#stat.index}].price" value="%{listBooks[#stat.index].price}"/>
 
-		  <td align="center" ><s:property value="#b.category.categoryName" /></td>
-    	  <td align="center" ><s:property value="#b.imagePath" /></td>
-        </tr>
-     </s:iterator>
+					<td align="center" ><s:property value="#b.bookId" /></td>
+					<td align="center" ><s:property value="#b.title" /></td>
+					<td align="center" ><s:property value="#b.author" /></td>
+					<td align="center" ><s:property value="#b.price" /></td>
+					<td align="center" >
+					<s:set var="quantity" value="listBooks[%{#stat.index}].quantity"></s:set>
+						<s:textfield id="listBooks%{#stat.index}" 
+						 name="requestBooks[%{#stat.index}].quantity" value="1" 
+						 theme="simple" onchange="javascript:;checkNum(this, this.value, '%{quantity}');"/>
+					</td>
+					<td align="center" ><s:property value="#b.category.categoryName" /></td>
+					<td align="center" ><s:property value="#b.imagePath" /></td>
+				</tr>
+			</s:iterator>
+			<tr>
+				<td colspan="7">
+					<div align="center">
+						<input type="submit" value="Pay" style="height: 50px; width: 90px; font-size: 20px;">
+					</div>
+				</td>
+			</tr>
     </table>
-    
+</s:form> 
+	<SCRIPT type="text/javascript" src="js/jquery-1.8.3.js"></SCRIPT>
+    <script type="text/javascript">
+	    function checkNum(obj, num, quantity){
+	    	var numN = parseInt(num);
+	    	var quantityN = parseInt(quantity);
+	        if(numN > quantityN){
+	            alert("Only " + quantity + " books available in stock£¬please enter again");
+	            var ids = obj.id;
+	            $("#"+ids).val(1);
+	        }else{
+	            return true;
+	        }
+	    }
+    </script>
   </body>
 </html>

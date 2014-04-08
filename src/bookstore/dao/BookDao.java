@@ -1,7 +1,5 @@
 package bookstore.dao;
-
 import java.util.List;
-
 import org.springframework.dao.DataAccessException;
 import bookstore.model.Book;
 import bookstore.model.Category;
@@ -14,5 +12,8 @@ public interface BookDao {
 			Category category, String imagePath) throws DataAccessException;
 	public List<Book> getBooks(Book book) throws DataAccessException;
 	public Book getByBookId(Integer bookId) throws DataAccessException;
+	public boolean updateBook(Book book) throws DataAccessException;
+	public List<Book> sortBookByParam(String sort) throws DataAccessException;
+	public List<Book> sortBookByParam2(String sort);
 
 }

@@ -60,14 +60,20 @@ public class AccountDaoImpl implements AccountDao{
 	public boolean updateAccount(Integer accountId,
 			String shippingAddress, String paymentMethod, Double balance)
 	throws DataAccessException {
-		Account account= (Account) this.hibernateTemplate.load(Account.class,accountId);
-		if(account!=null) {
-			account.setShippingAddress(shippingAddress);
-			account.setPaymentMethod(paymentMethod);
-			account.setBalance(balance);
-			return true;
-		}
-		return false;
+//		Account account= (Account) this.hibernateTemplate.load(Account.class,accountId);
+//		if(account!=null) {
+//			account.setShippingAddress(shippingAddress);
+//			account.setPaymentMethod(paymentMethod);
+//			account.setBalance(balance);
+//			return true;
+//		}
+		Account acc = new Account();
+		acc.setAccountId(accountId);
+		acc.setBalance(balance);
+		acc.setShippingAddress(shippingAddress);
+		acc.setPaymentMethod(paymentMethod);
+		this.hibernateTemplate.update(acc);
+		return true;
 	}
 	
 	public List<Account> getAccountbyCustomerId(Account account) throws DataAccessException {
@@ -91,6 +97,12 @@ public class AccountDaoImpl implements AccountDao{
 	@Resource
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	@Override
+	public boolean updateAccount(Account account) throws DataAccessException {
+		this.hibernateTemplate.update(account);
+		return true;
 	}
 
 }

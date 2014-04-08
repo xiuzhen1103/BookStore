@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -29,13 +30,10 @@ Hello <s:property value="#session.admin.username"/><br/>
 </div>
   <b>Update Topic</b>
     <form method="post" action="updateTopic">
-<<<<<<< HEAD
+
   		Topic Id:<input type="text" name="topic.topicId" value="${topic.topicId}" ><br>
     	Topic Name:<input type="text" name="topic.name" value="${topic.name}"><br>
-=======
-  		Topic Id:<input type="text" name="topic.topicId" value="<s:property value='topic.topicId'/>" ><br>
-    	Topic Name:<input type="text" name="topic.name" value="<s:property value='topic.name'/>"><br>
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
+
     	<input name="back" type="button" onclick="history.back()" value="Back" >
     	<input type="submit" value="submit"/>
     </form>

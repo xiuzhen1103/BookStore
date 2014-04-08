@@ -4,15 +4,13 @@ import javax.annotation.Resource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
-
 import bookstore.dao.CustomerDao;
-import bookstore.model.Book;
 import bookstore.model.Customer;
 @Component("customerDao")
 public class CustomerDaoImpl implements CustomerDao{
 	private HibernateTemplate hibernateTemplate; 
 
+	@SuppressWarnings("unchecked")
 	public boolean customerAuthentication(String username, String password)
 	throws DataAccessException {
 		List<Customer> customers = hibernateTemplate.find("from Customer c where c.username='"+username + "' and c.password='"+ password + "'");
@@ -51,12 +49,6 @@ public class CustomerDaoImpl implements CustomerDao{
 		 if(customers != null && customers.size() > 0) {
 			 return customers.get(0);
 			}
-		 /*
-		 Object[] values = {"username","password"};
-		 String hql = "from Regites where username=? and password=?";
-
-		 getHibernateTemplate().find(hql,vlaues);
-		 */
 		 return null;
 	}
 

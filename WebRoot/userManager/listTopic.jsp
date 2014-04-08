@@ -56,6 +56,5 @@ Hello <s:property value="#session.admin.username"/><br/>
      </s:iterator>
     </table>
     
-    <s:debug></s:debug>
   </body>
 </html>

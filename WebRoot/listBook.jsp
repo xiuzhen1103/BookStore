@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
   <p align="right">
-Hello <s:property value="#session.customer.username"/><br/>
+Hello  <s:property value="#session.customer.username"/><br/>
 <a href="customer!get?customer.customerId=<s:property value="#session.customer.customerId"/> ">Profile</a>
 <a href="book!listShoppingCart.action">Shopping Cart</a>
 <a href="loginCustomer.jsp">Logout</a> 
@@ -55,6 +55,10 @@ Hello <s:property value="#session.customer.username"/><br/>
   	
   		<input type="submit" value="submit"/>
   	</form>
+  	
+  	<a href="book!sortBook?sort=price" style="margin-top:10px;margin-left:180px;">Sort By Price</a>
+  	<a href="book!sortBook?sort=author" style="margin-top:10px;margin-left:180px;">Sort By Author</a>
+  	<a href="book!sortBook?sort=title" style="margin-top:10px;margin-left:180px;">Sort By Title</a>
 
  	 <table style="width:100%" width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6">
  	 	 <tr>

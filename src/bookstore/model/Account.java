@@ -1,6 +1,7 @@
 package bookstore.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,8 +42,8 @@ public class Account {
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
-	@ManyToOne
-	@JoinColumn(name = "customerId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customerId", nullable = false)
 	public Customer getCustomer() {
 		return customer;
 	}

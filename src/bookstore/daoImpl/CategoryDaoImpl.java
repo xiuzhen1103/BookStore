@@ -1,13 +1,10 @@
 package bookstore.daoImpl;
-
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,11 +12,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import bookstore.dao.CategoryDao;
 import bookstore.model.Book;
 import bookstore.model.Category;
-import bookstore.model.Customer;
 
 @Component("categoryDao")
 public class CategoryDaoImpl implements CategoryDao{
@@ -90,7 +85,7 @@ public class CategoryDaoImpl implements CategoryDao{
 	}
 
 	@Override
-	public Category getByCustomerId(Integer categoryId)
+	public Category getById(Integer categoryId)
 			throws DataAccessException {
 		return (Category) this.hibernateTemplate.get(Category.class, categoryId);
 	}

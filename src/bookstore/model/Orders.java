@@ -1,12 +1,12 @@
 package bookstore.model;
-import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
-public class Order {
+public class Orders {
 	private Integer orderId;
 	private Double totalAmount;
 	private Integer quantity;
@@ -34,22 +34,20 @@ public class Order {
 	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	@ManyToOne
-	@JoinColumn(name = "accountId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "accountId", nullable = false)
 	public Account getAccount() {
 		return account;
 	}
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	@ManyToOne
-	@JoinColumn(name = "customerId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customerId", nullable = false)
 	public Customer getCustomer() {
 		return customer;
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
-
 }

@@ -1,23 +1,17 @@
 package bookstore.action;
-
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import bookstore.model.Category;
 import bookstore.service.CategoryManager;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 @Component("category")
 @Scope("prototype")
 public class CategoryAction extends ActionSupport{
-
 	private static final long serialVersionUID = 1L;
-	private Category category;
+	private Category category = new Category();
 	private CategoryManager categoryManager;
 	private String message="";
 	private List<Category> categorys;
@@ -81,6 +75,9 @@ public class CategoryAction extends ActionSupport{
 	}
 	public void setCategorys(List<Category> categorys) {
 		this.categorys = categorys;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 

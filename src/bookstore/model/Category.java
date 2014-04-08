@@ -7,7 +7,10 @@ import javax.persistence.Id;
 @Entity
 public class Category implements java.io.Serializable{
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4627182428015168502L;
 	private Integer categoryId;
 	private String categoryName;
 	

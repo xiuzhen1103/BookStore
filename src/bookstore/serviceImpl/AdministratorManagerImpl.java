@@ -30,8 +30,7 @@ public class AdministratorManagerImpl implements AdministratorManager {
 	}
 	@Override
 	public Administrator getByUserName(Administrator admin) {
-		// TODO Auto-generated method stub
-		return null;
+		return adminDao.getByUserName(admin.getUsername());
 	}
 	
 

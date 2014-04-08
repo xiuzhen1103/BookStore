@@ -10,6 +10,6 @@ public interface CategoryDao {
 	public void save(Category category) throws DataAccessException;
 	public boolean updateCategory(Integer categoryId, String categoryName) throws DataAccessException;
 	public List<Category> getCategorys() throws DataAccessException;
-	public Category getByCustomerId(Integer categoryId) throws DataAccessException;
+	public Category getById(Integer categoryId) throws DataAccessException;
 
 }

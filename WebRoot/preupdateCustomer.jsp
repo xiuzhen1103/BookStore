@@ -35,15 +35,13 @@ Hello <s:property value="#session.customer.username"/><br/>
     </ul>
 </div>
 </div>
-  
   <body>
   
-<<<<<<< HEAD
+
   <a href="addAccount.jsp">Add Account</a> 
    <a href="account!list.action">List Account</a> 
-=======
-  
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
+   <a href="order!listByCustomerId.action?customerId=<s:property value='customer.customerId'/>">List Order</a> 
+
      <form method="post" action="updateCustomer">
     	Customer Id:<input type="text" name="customer.customerId" value="<s:property value='customer.customerId'/>" readonly><br>
     	User Name:<input type="text" name="customer.username" value="<s:property value='customer.username'/>"><br>
