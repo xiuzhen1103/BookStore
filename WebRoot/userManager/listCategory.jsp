@@ -36,11 +36,9 @@ Hello <s:property value="#session.admin.username"/><br/>
 </div>
  <br />
     <b>Display All Category:</b>  
-<<<<<<< HEAD
+
     <a href="userManager/addCategory.jsp">Add Category </a> 
-=======
-    <a href="userManager/addTopic.jsp">Add Category </a> 
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
+
  <br> <br />
 
  	 <table style="width:100%" width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6">
@@ -59,7 +57,6 @@ Hello <s:property value="#session.admin.username"/><br/>
         </tr>
      </s:iterator>
     </table>
-    
-    <s:debug></s:debug>
+
   </body>
 </html>

@@ -19,7 +19,6 @@ public class CommentManagerImpl implements CommentManager{
 	@Override
 	public void add(Comment comment) throws DataAccessException {
 		commentDao.save(comment);
-		
 	}
 
 	@Override
@@ -28,9 +27,11 @@ public class CommentManagerImpl implements CommentManager{
 	}
 
 	@Override
-	public List<Comment> getByBookId(Book book) throws DataAccessException {
-		return  commentDao.getCommentByBookId(book.getBookId());
+	public List<Comment> getByBookId(Integer bookId) throws DataAccessException {
+		return  commentDao.getCommentByBookId(bookId);
 	}
+
+	
 
 	@Override
 	public boolean updatet(Comment comment) throws DataAccessException {
@@ -47,7 +48,6 @@ public class CommentManagerImpl implements CommentManager{
 
 	@Override
 	public Comment get(Comment comment) throws Exception {
-		// TODO Auto-generated method stub
 		return commentDao.getCommentById(comment.getCommentId());
 	}
 	

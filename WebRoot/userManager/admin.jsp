@@ -38,17 +38,12 @@ Hello <s:property value="#session.admin.username"/><br/>
 
 	<a href="topic!list.action">Topic list</a> <br/> <br/>
 	
-	<b>Area: </b><br/>
+	<b>Category: </b><br/>
 	<a href="category!list.action">Category list</a> <br/> <br/>
 	
-	<b>Job: </b><br/>
-	<a href="job!list.action">Job list</a> <br/> <br/>
+	<b>Order: </b><br/>
+	<a href="order!list.action">Order list</a> <br/> <br/>
 	
-	<b>Skill Category: </b><br/>
-	<a href="sc!list.action">Skill Category list</a> <br/> <br/>
-	
-	<b>Skill: </b><br/>
-	<a href="sk!list.action">Skill list</a> <br/> <br/>
-	
+
 </body>
 </html>

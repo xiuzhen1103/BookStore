@@ -61,12 +61,10 @@
 		</action>
 		
 		<action name="updateCategory" class="category" method="update">
-			<result name="success" type="chain">book2</result>
+			<result name="success" type="redirectAction">category!list</result>
 			<result name="fail">/fail.jsp</result>
-<<<<<<< HEAD
-=======
 			<result name="updateCategory">/userManager/updateCategory.jsp</result>
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
+
 		</action>
 		
 		<action name="book1" class="book" method="books">
@@ -75,6 +73,7 @@
 		
 		<action name="book" class="book">
 			<result name="success">/success.jsp</result>
+			<result name="paySuccess">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="addBook">/userManager/addBook.jsp</result>
 			<result name="list">/listBook.jsp</result>
@@ -85,6 +84,7 @@
 			<result name="listShoppingCart">/listShoppingCart.jsp</result>
 			<result name="addToCart">/success.jsp</result>
 			<result name="get">/userManager/preupdateBook.jsp</result>
+			<result name="sortBook">/listBookByParam.jsp</result>
 		</action>
 		
 		<action name="updateBook" class="book" method="update">
@@ -106,22 +106,16 @@
 		<action name="updateTopic" class="topic" method="update">
 			<result name="success" type="chain">topic2</result>
 			<result name="fail">/fail.jsp</result>
-<<<<<<< HEAD
 		</action>
-		
-		<action name="listTopics" class="book" method="listTopics">
-=======
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
-		</action>
+
+		<action name="listTopics" class="book" method="listTopics"></action>
 		
 		<action name="bookTopic" class="bookTopic">
 			<result name="success" type="redirectAction">topic!list</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="list">/userManager/listBookTopic.jsp</result>
 		</action>
-		
-		
-		
+
 		<action name="account" class="account">
 			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
@@ -134,10 +128,26 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
+		
 		<action name="comment" class="comment">
-		<result name="addComment">/addComment.jsp</result>
 			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="input">/addComment.jsp</result>
+			<result name="list">/listComment.jsp</result>
+		</action>
+		
+		<action name="order" class="order">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="list">/userManager/listOrder.jsp</result>
+			<result name="listByCustomerId">/listOrder.jsp</result>
+		</action>
+		
+		<action name="orderItem" class="orderItem">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="list">/userManager/listOrderItem.jsp</result>
+			<result name="listByCustomerId">/listOrderItem.jsp</result>
 		</action>
 		
 	</package>

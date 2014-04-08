@@ -43,8 +43,7 @@ public class AccountManagerImpl implements AccountManager{
 
 	@Override
 	public boolean update(Account account) throws Exception {
-		// TODO Auto-generated method stub
-		return accountDao.updateAccount(account.getAccountId(), account.getShippingAddress(), account.getPaymentMethod(), account.getBalance());
+		return accountDao.updateAccount(account);
 	}
 
 	public AccountDao getAccountDao() {

@@ -1,4 +1,5 @@
 package bookstore.model;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,16 +15,6 @@ import javax.persistence.Transient;
 
 @Entity
 public class Book implements java.io.Serializable{
-<<<<<<< HEAD
-	
-=======
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	/**
-	 * 
-	 */
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
 	private static final long serialVersionUID = 1L;
 	private Integer bookId;
 	private String title;
@@ -36,6 +27,15 @@ public class Book implements java.io.Serializable{
 	private Integer[] checkBoxes;
 	private Set<BookTopic> bookTopics = new HashSet<BookTopic>(0);
 	
+	public Book() {
+		super();
+	}
+	
+	public Book(Integer bookId) {
+		super();
+		this.bookId = bookId;
+	}
+
 	@Id
 	@GeneratedValue
 	public Integer getBookId() {
@@ -63,11 +63,12 @@ public class Book implements java.io.Serializable{
 		this.price = price;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "categoryId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "categoryId", nullable = false)
 	public Category getCategory() {
 		return category;
 	}
+	
 	public void setCategory(Category category) {
 		this.category = category;
 	}
@@ -95,7 +96,7 @@ public class Book implements java.io.Serializable{
 		this.quantity = quantity;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "book")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "book")
 	@JoinColumn(name = "bookId")
 	public Set<BookTopic> getBookTopics() {
 		return bookTopics;
@@ -111,6 +112,19 @@ public class Book implements java.io.Serializable{
 	public void setCheckBoxes(Integer[] checkBoxes) {
 		this.checkBoxes = checkBoxes;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", title=" + title + ", author="
+				+ author + ", price=" + price + ", quantity=" + quantity
+				+ ", category=" + category + ", imagePath=" + imagePath
+				+ ", radioList=" + radioList + ", checkBoxes="
+				+ Arrays.toString(checkBoxes) + ", bookTopics=" + bookTopics
+				+ "]";
+	}
+	
 	
 	
 }

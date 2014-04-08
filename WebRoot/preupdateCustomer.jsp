@@ -35,15 +35,20 @@ Hello <s:property value="#session.customer.username"/><br/>
     </ul>
 </div>
 </div>
-  
   <body>
   
-<<<<<<< HEAD
+
   <a href="addAccount.jsp">Add Account</a> 
    <a href="account!list.action">List Account</a> 
+<<<<<<< HEAD
+   <a href="order!listByCustomerId.action?customerId=<s:property value='customer.customerId'/>">List Order</a> 
 =======
-  
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
+<<<<<<< HEAD
+   <a href="order!listByCustomerId.action?customerId=<s:property value='customer.customerId'/>">List Order</a> 
+=======
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
+
      <form method="post" action="updateCustomer">
     	Customer Id:<input type="text" name="customer.customerId" value="<s:property value='customer.customerId'/>" readonly><br>
     	User Name:<input type="text" name="customer.username" value="<s:property value='customer.username'/>"><br>

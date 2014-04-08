@@ -3,6 +3,7 @@ package bookstore.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Comment {
 	private Integer commentId;
-	private Book book;
+	private Book book = new Book();
 	private Integer rate;
 	private String comment;
 	private Date createTime;
@@ -26,8 +27,8 @@ public class Comment {
 		this.commentId = commentId;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "bookId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "bookId", nullable = false)
 	public Book getBook() {
 		return book;
 	}
@@ -53,8 +54,8 @@ public class Comment {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	@ManyToOne
-	@JoinColumn(name = "customerId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customerId", nullable = false)
 	public Customer getCustomer() {
 		return customer;
 	}

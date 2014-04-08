@@ -45,6 +45,7 @@ public class AccountAction {
 	}
 	
 	public String list() throws Exception {
+		
 		this.accounts = accountManager.getAccountbyCustomerId(this.account);
 		return "list";	
 	}
@@ -87,8 +88,5 @@ public class AccountAction {
 	 private Customer getCustomerFromSession() {
 	        return (Customer) ServletActionContext.getRequest().getSession().getAttribute("customer");
 	    }
-	 
-
-	
 
 }

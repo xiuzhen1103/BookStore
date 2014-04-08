@@ -9,9 +9,11 @@ import bookstore.model.Comment;
 
 public interface CommentManager {
 	public void add(Comment comment) throws Exception;
-	public List<Comment> getByBookId(Book book) throws Exception;
+
 	public boolean updatet(Comment comment) throws Exception;
 	public boolean delete(Comment comment) throws Exception;
-	public Comment get(Comment comment) throws Exception; 
+	public Comment get(Comment comment) throws Exception;
+	public List<Comment> getByBookId(Integer bookId) throws DataAccessException;
+	
 
 }
