@@ -32,10 +32,13 @@ Hello <s:property value="#session.customer.username"/><br/>
  
   <b>Add Comment</b>
     <form method="post" action="comment.action">
-    	 Book Id:<input type="text" name="book.bookId" value="${bbookId}"><br>
-    	 Rate: <input type="text" name="comment.rate"><br>
-    	 Comment:<input type="text" name="comment.rate"><br>
-    	 Create time:<input type="text" name="comment.createTime"><br>
+    	 Book Id:<input type="text" name="comment.book.bookId" value="<s:property value='#request.bookId'/>">  <br>
+    	 Comment: <input type="text" name="comment.comment"><br>
+    	 Rate: <select name="comment.rate">
+  			<option value="0">0</option>
+ 			<option value="1">1</option>
+  			<option value="2">2</option>
+		</select><br>
     	 <input name="back" type="button" onclick="history.back()" value="Back" >
     	<input type="submit" value="submit"/>
     </form>

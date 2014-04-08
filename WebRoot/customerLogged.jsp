@@ -10,17 +10,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
  <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<<<<<<< HEAD
+
  <link type="text/css" href="<%=basePath%>style/style.css" rel="StyleSheet" />
 	<link type="text/css" href="<%=basePath%>js/select2/select2.css" rel="StyleSheet" />
 	<script type="text/javascript" src="<%=basePath%>js/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/select2/select2.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/select2/select2_locale_en.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/bookTopic.js"></script>
-=======
-<link href="<%=basePath%>style/style.css"  type="text/css" rel="StyleSheet" />
->>>>>>> 82bb03b2ad8310ecfe595292aa7459bad4a4b15f
+
+
 <title>Customer Logged</title>
 </head>
 
@@ -87,7 +85,8 @@ Hello <s:property value="#session.customer.username"/><br/>
              </s:iterator>
            </td>
            
-           <td><a href="comment!addComment?book.bookId=<s:property value="#b.bookId" />">Comment</a></td>
+           <td><a href="comment!list.action?bookId=<s:property value="#b.bookId" />">Comment</a></td>
+          
            <td><a href="book!addToCart?book.bookId=<s:property value="#b.bookId" />">Add To Cart</a></td>
 
         </tr>

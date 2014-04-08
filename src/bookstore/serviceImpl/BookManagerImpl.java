@@ -26,7 +26,7 @@ public class BookManagerImpl implements BookManager{
 
 	@Override
 	public boolean update(Book book) throws Exception {
-		return bookDao.updateBook(book.getBookId(), book.getTitle(), book.getAuthor(), book.getPrice(),book.getQuantity(), book.getCategory(), book.getImagePath());
+		return bookDao.updateBook(book);
 	}
 
 	public BookDao getBookDao() {
@@ -39,8 +39,8 @@ public class BookManagerImpl implements BookManager{
 
 	@Override
 	public Book get(Integer bookId) throws Exception {
-		// TODO Auto-generated method stub
-		return bookDao.getByBookId(bookId);
+		Book book = bookDao.getByBookId(bookId);
+		return book; 
 	}
 
 	

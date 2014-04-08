@@ -9,7 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Entity
-public class BookTopic {
+public class BookTopic implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1406638093998138710L;
 	private Integer bookTopicId;
 	private Book book;
 	private Topic topic;

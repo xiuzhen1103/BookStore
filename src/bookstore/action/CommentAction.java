@@ -1,14 +1,12 @@
 package bookstore.action;
 
 import java.util.List;
-
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import bookstore.model.Book;
 import bookstore.model.Comment;
 import bookstore.model.Customer;
 import bookstore.service.CommentManager;
@@ -18,11 +16,14 @@ import com.opensymphony.xwork2.ActionSupport;
 @Component("comment")
 @Scope("prototype")
 public class CommentAction extends ActionSupport{
+	private static final long serialVersionUID = 1L;
 	private Comment comment = new Comment();
 	private List<Comment> comments;
 	private CommentManager commentManager;
 	private String message = "";
-	private Book b;
+	private Integer bookId =1;
+	private String x ="1"; 
+
 	public Comment getComment() {
 		return comment;
 	}
@@ -48,10 +49,10 @@ public class CommentAction extends ActionSupport{
 		return "get";
 	}
 	
-	public String addComment() throws Exception{
+	public String execute() throws Exception{
 		comment.setCustomer(getCustomerFromSession());
 		commentManager.add(this.comment);
-		return "addComment";
+		return "success";
 	}
 	
 	public String delete() throws Exception{
@@ -65,9 +66,17 @@ public class CommentAction extends ActionSupport{
 			return "fail";
 		}
 	}
+	public String add() throws Exception {
+		//HttpServletRequest request = ServletActionContext.getRequest();
+		//request.setAttribute("bookId", bookId);
+		this.comments = commentManager.getByBookId(bookId);
+		return "input";
+	}
 	public String list() throws Exception {
-		this.comments = commentManager.getByBookId(b);
-		return "list";	
+		//HttpServletRequest request = ServletActionContext.getRequest();
+		//request.setAttribute("bookId", bookId);
+		this.comments = commentManager.getByBookId(bookId);
+		return "list";
 	}
 	
 	public String update() throws Exception {
@@ -91,12 +100,22 @@ public class CommentAction extends ActionSupport{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Book getB() {
-		return b;
+	public Integer getBookId() {
+		return bookId;
 	}
-	public void setB(Book b) {
-		this.b = b;
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public String getX() {
+		return x;
+	}
+	public void setX(String x) {
+		this.x = x;
+	}
+
 	
 
 }

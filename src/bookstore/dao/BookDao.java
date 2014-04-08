@@ -14,5 +14,6 @@ public interface BookDao {
 			Category category, String imagePath) throws DataAccessException;
 	public List<Book> getBooks(Book book) throws DataAccessException;
 	public Book getByBookId(Integer bookId) throws DataAccessException;
+	public boolean updateBook(Book book) throws DataAccessException;
 
 }

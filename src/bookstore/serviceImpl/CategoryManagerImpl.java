@@ -44,7 +44,7 @@ public class CategoryManagerImpl implements CategoryManager{
 
 	@Override
 	public Category getbyId(Category category) throws Exception {
-		return categoryDao.getByCustomerId(category.getCategoryId());
+		return categoryDao.getById(category.getCategoryId());
 	}
 	
 	

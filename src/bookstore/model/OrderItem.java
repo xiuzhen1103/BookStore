@@ -1,6 +1,7 @@
 package bookstore.model;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,8 +12,8 @@ public class OrderItem {
 	private Integer orderItemId;
 	private Double price;
 	private Integer quantity;
-	private Date createTime;
-	private Order order;
+	private Date createTime = new Date();
+	private Orders order;
 	private Book book;
 	
 	@Id
@@ -41,16 +42,16 @@ public class OrderItem {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	@ManyToOne
-	@JoinColumn(name = "orderId")
-	public Order getOrder() {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "orderId", nullable = false)
+	public Orders getOrder() {
 		return order;
 	}
-	public void setOrder(Order order) {
+	public void setOrder(Orders order) {
 		this.order = order;
 	}
-	@ManyToOne
-	@JoinColumn(name = "bookId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "bookId", nullable = false)
 	public Book getBook() {
 		return book;
 	}
