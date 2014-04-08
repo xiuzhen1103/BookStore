@@ -134,6 +134,10 @@
 			<result name="fail">/fail.jsp</result>
 			<result name="input">/addComment.jsp</result>
 			<result name="list">/listComment.jsp</result>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 		</action>
 		
 		<action name="order" class="order">
@@ -148,6 +152,11 @@
 			<result name="fail">/fail.jsp</result>
 			<result name="list">/userManager/listOrderItem.jsp</result>
 			<result name="listByCustomerId">/listOrderItem.jsp</result>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 		</action>
 		
 	</package>

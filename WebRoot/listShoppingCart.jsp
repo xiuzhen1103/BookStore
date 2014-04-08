@@ -52,7 +52,15 @@ Hello <s:property value="#session.customer.username"/><br/>
 				<tr bgcolor="#EFF3F7" class="TableBody1" onmouseover="this.bgColor='#DEE7FF';" onmouseout="this.bgColor='#EFF3F7';">
 					<s:hidden name="requestBooks[%{#stat.index}].bookId" value="%{listBooks[#stat.index].bookId}"/>
 					<s:hidden name="requestBooks[%{#stat.index}].price" value="%{listBooks[#stat.index].price}"/>
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+					<%-- 			       <s:textfield label="Name" name="listBooks[%{#stat.index}].name" value="%{listBooks[#stat.index].name}"/> --%>
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 					<td align="center" ><s:property value="#b.bookId" /></td>
 					<td align="center" ><s:property value="#b.title" /></td>
 					<td align="center" ><s:property value="#b.author" /></td>
@@ -65,12 +73,27 @@ Hello <s:property value="#session.customer.username"/><br/>
 					</td>
 					<td align="center" ><s:property value="#b.category.categoryName" /></td>
 					<td align="center" ><s:property value="#b.imagePath" /></td>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+					<br/>
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 				</tr>
 			</s:iterator>
 			<tr>
 				<td colspan="7">
 					<div align="center">
+<<<<<<< HEAD
 						<input type="submit" value="Pay" style="height: 50px; width: 90px; font-size: 20px;">
+=======
+<<<<<<< HEAD
+						<input type="submit" value="Pay" style="height: 50px; width: 90px; font-size: 20px;">
+=======
+						<input type="submit" value="付款Pay" style="height: 50px; width: 90px; font-size: 20px;">
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 					</div>
 				</td>
 			</tr>
@@ -82,7 +105,15 @@ Hello <s:property value="#session.customer.username"/><br/>
 	    	var numN = parseInt(num);
 	    	var quantityN = parseInt(quantity);
 	        if(numN > quantityN){
+<<<<<<< HEAD
 	            alert("Only " + quantity + " books available in stock，please enter again");
+=======
+<<<<<<< HEAD
+	            alert("Only " + quantity + " books available in stock，please enter again");
+=======
+	            alert("本书只剩下" + quantity + "本，超出该书数量，请重新输入！");
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
+>>>>>>> 19e1717f808993f07ab01d073a149f8eda9d531a
 	            var ids = obj.id;
 	            $("#"+ids).val(1);
 	        }else{
