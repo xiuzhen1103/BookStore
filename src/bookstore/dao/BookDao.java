@@ -13,12 +13,7 @@ public interface BookDao {
 	public List<Book> getBooks(Book book) throws DataAccessException;
 	public Book getByBookId(Integer bookId) throws DataAccessException;
 	public boolean updateBook(Book book) throws DataAccessException;
-
 	public List<Book> sortBookByParam(String sort) throws DataAccessException;
 	public List<Book> sortBookByParam2(String sort);
-
-	public List<Book> sortBookByParam(String sort) throws DataAccessException;
-	public List<Book> sortBookByParam2(String sort);
-
 
 }

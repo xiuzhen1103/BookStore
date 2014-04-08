@@ -6,9 +6,6 @@ public class RequestBook {
 	private Integer quantity;
 	private Double price;
 
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
-	}
 
 	public Integer getQuantity() {
 		return quantity;
@@ -26,5 +23,15 @@ public class RequestBook {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
+	public Integer getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
+	}
+
+
 	
 }
