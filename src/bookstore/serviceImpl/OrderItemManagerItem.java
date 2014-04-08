@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 
 import bookstore.dao.OrderItemDao;
 import bookstore.model.OrderItem;
+<<<<<<< HEAD
 import bookstore.model.Orders;
+=======
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 import bookstore.service.OrderItemManager;
 
 @Component("orderItemManager")
@@ -23,11 +26,32 @@ public class OrderItemManagerItem implements OrderItemManager {
 
 	@Override
 	public boolean update(OrderItem orderItem) throws Exception {
+<<<<<<< HEAD
+=======
+		// TODO Auto-generated method stub
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 		return false;
 	}
 
 	@Override
+<<<<<<< HEAD
 	public boolean delete(OrderItem orderItem) throws Exception {
+=======
+	public List<OrderItem> getOrders(OrderItem orderItem) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderItem> getOrders() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(OrderItem orderItem) throws Exception {
+		// TODO Auto-generated method stub
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 		return false;
 	}
 
@@ -40,6 +64,7 @@ public class OrderItemManagerItem implements OrderItemManager {
 		this.orderItemDao = orderItemDao;
 	}
 
+<<<<<<< HEAD
 
 
 	@Override
@@ -48,4 +73,6 @@ public class OrderItemManagerItem implements OrderItemManager {
 		return orderItemDao.getOrderItemByOrderId(orderId);
 	}
 
+=======
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 }

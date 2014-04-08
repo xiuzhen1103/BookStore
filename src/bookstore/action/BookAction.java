@@ -42,9 +42,13 @@ public class BookAction extends ActionSupport{
 	private AccountManager accountManager;
 	private OrderManager orderManager;
 	private OrderItemManager orderItemManager;
+<<<<<<< HEAD
 	private String sort;
 	private List<Book> listBookSortByParam;
 	private static int flag =0;
+=======
+	
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 	private List<RequestBook> requestBooks;
 	
 	public BookManager getBookManager() {
@@ -179,7 +183,11 @@ public class BookAction extends ActionSupport{
 		}
 		List<Account> accList = accountManager.getAccountbyCustomerId(null);
 		if(accList == null || accList.size() <= 0){
+<<<<<<< HEAD
 			throw new Exception("The account is not exist");
+=======
+			throw new Exception("该用户无账号信息，请核对！");
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 		}
 		Account acc = accList.get(0);
 		order.setAccount(acc);
@@ -187,9 +195,15 @@ public class BookAction extends ActionSupport{
 		order.setTotalAmount(totalAmount);
 		order.setQuantity(quantity);
 		orderManager.add(order);
+<<<<<<< HEAD
 		List<Orders> orderList = orderManager.listOrders();
 		if(orderList == null || orderList.size() <= 0){
 			throw new Exception("Save failed");
+=======
+		List<Orders> orderList = orderManager.getOrders();
+		if(orderList == null || orderList.size() <= 0){
+			throw new Exception("保存订单失败！");
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 		}
 		for(RequestBook book : requestBooks){
 			OrderItem item = new OrderItem();
@@ -201,10 +215,17 @@ public class BookAction extends ActionSupport{
 		}
 		Double balance = acc.getBalance() - order.getTotalAmount();
 		if(balance < 0.0){
+<<<<<<< HEAD
 			throw new Exception("insufficient balance");
 		}
 		acc.setBalance(balance); 
 		accountManager.update(acc);     
+=======
+			throw new Exception("账户余额不足！");
+		}
+		acc.setBalance(balance); //订单支付成功后减掉账户金额
+		accountManager.update(acc);     //更新账户
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 		for(RequestBook book : requestBooks){
 			Book b = bookManager.get(book.getBookId());
 			b.setQuantity(b.getQuantity() - book.getQuantity());
@@ -248,7 +269,20 @@ public class BookAction extends ActionSupport{
 		ServletActionContext.getResponse().getWriter().print(sb.toString());
 		return null;
 	}
+	/**
+	 * @return the requestBooks
+	 */
+	public List<RequestBook> getRequestBooks() {
+		return requestBooks;
+	}
+	/**
+	 * @param requestBooks the requestBooks to set
+	 */
+	public void setRequestBooks(List<RequestBook> requestBooks) {
+		this.requestBooks = requestBooks;
+	}
 
+<<<<<<< HEAD
 	public List<RequestBook> getRequestBooks() {
 		return requestBooks;
 	}
@@ -262,15 +296,38 @@ public class BookAction extends ActionSupport{
 		return accountManager;
 	}
 
+=======
+	/**
+	 * @return the accountManager
+	 */
+	public AccountManager getAccountManager() {
+		return accountManager;
+	}
+	/**
+	 * @param accountManager the accountManager to set
+	 */
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 	@Resource(name="accountManager")
 	public void setAccountManager(AccountManager accountManager) {
 		this.accountManager = accountManager;
 	}
+<<<<<<< HEAD
 
 	public OrderManager getOrderManager() {
 		return orderManager;
 	}
 
+=======
+	/**
+	 * @return the orderManager
+	 */
+	public OrderManager getOrderManager() {
+		return orderManager;
+	}
+	/**
+	 * @param orderManager the orderManager to set
+	 */
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 	@Resource(name="orderManager")
 	public void setOrderManager(OrderManager orderManager) {
 		this.orderManager = orderManager;
@@ -295,6 +352,7 @@ public class BookAction extends ActionSupport{
 	public void setOrderItemManager(OrderItemManager orderItemManager) {
 		this.orderItemManager = orderItemManager;
 	}
+<<<<<<< HEAD
 	public String sortBook() throws Exception {
 		
 		if(flag%2==0) {
@@ -329,6 +387,9 @@ public class BookAction extends ActionSupport{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+=======
+	
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 	
 
 }

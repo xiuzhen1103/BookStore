@@ -1,9 +1,21 @@
 package bookstore.daoImpl;
+<<<<<<< HEAD
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
+=======
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Component;
+
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 import bookstore.dao.OrderItemDao;
 import bookstore.model.OrderItem;
 
@@ -20,12 +32,17 @@ public class OrderItemDaoImpl implements OrderItemDao {
 	@Override
 	public boolean deleteOrderItem(Integer orderItemId)
 			throws DataAccessException {
+<<<<<<< HEAD
+=======
+		// TODO Auto-generated method stub
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 		return false;
 	}
 
 	@Override
 	public boolean updateOrderItem(OrderItem orderItem)
 			throws DataAccessException {
+<<<<<<< HEAD
 		return false;
 	}
 
@@ -34,6 +51,23 @@ public class OrderItemDaoImpl implements OrderItemDao {
 	@Override
 	public List<OrderItem> getOrderItemByOrderId(Integer orderId) throws DataAccessException {
 		return (List<OrderItem>)this.hibernateTemplate.find("from OrderItem o where o.order.orderId= '" + orderId + "'");
+=======
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<OrderItem> getOrderItem(OrderItem orderItem)
+			throws DataAccessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderItem> getOrderItem() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return null;
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 	}
 
 	public HibernateTemplate getHibernateTemplate() {

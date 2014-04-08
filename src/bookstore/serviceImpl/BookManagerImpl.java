@@ -41,6 +41,7 @@ public class BookManagerImpl implements BookManager{
 	public Book get(Integer bookId) throws Exception {
 		Book book = bookDao.getByBookId(bookId);
 		return book; 
+<<<<<<< HEAD
 	}
 	@Override
 	public List<Book> sortBookByParam(String sort) throws Exception {
@@ -50,6 +51,8 @@ public class BookManagerImpl implements BookManager{
 	@Override
 	public List<Book> sortBookByParam2(String sort) {
 		return bookDao.sortBookByParam2(sort);
+=======
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 	}
 
 	

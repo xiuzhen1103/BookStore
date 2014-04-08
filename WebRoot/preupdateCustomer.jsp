@@ -40,7 +40,10 @@ Hello <s:property value="#session.customer.username"/><br/>
 
   <a href="addAccount.jsp">Add Account</a> 
    <a href="account!list.action">List Account</a> 
+<<<<<<< HEAD
    <a href="order!listByCustomerId.action?customerId=<s:property value='customer.customerId'/>">List Order</a> 
+=======
+>>>>>>> bd8b744e89ec63d0d890b31e4b32b2c4b87f99c9
 
      <form method="post" action="updateCustomer">
     	Customer Id:<input type="text" name="customer.customerId" value="<s:property value='customer.customerId'/>" readonly><br>
